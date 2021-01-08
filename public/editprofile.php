@@ -17,10 +17,11 @@
             <button class="show-form-button">Want a new profile picture?</button>
         </div>
 
+        <!--For edit profile avatar-->
         <form action="app/users/editprofile.php" method="post" enctype="multipart/form-data">
             <div class="form-section">
                 <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" required>
-                <button type="submit">Save</button>
+                <button type="submit">></button>
             </div>
         </form>
     </article>
@@ -35,7 +36,7 @@
             <div class="form-section">
                 <label for="username">New Username:</label>
                 <input type="text" name="username" id="username" required>
-                <button type="submit">Save</button>
+                <button type="submit">></button>
             </div>
         </form>
     </article>
@@ -50,7 +51,7 @@
             <div class="flex-column">
                 <label for="biography">Update Biography:</label>
                 <textarea maxlength="140" name="biography" id="biography" cols="50" rows="3" required><?php echo isset($user['biography']) ? $user['biography'] : ''; ?></textarea>
-                <button type="submit">Save</button>
+                <button type="submit">></button>
             </div>
         </form>
     </article>
@@ -65,7 +66,7 @@
             <div class="form-section">
                 <label for="email">Update email:</label>
                 <input type="email" name="email" id="email" required>
-                <button type="submit">Save</button>
+                <button type="submit">></button>
             </div>
         </form>
     </article>
@@ -89,7 +90,7 @@
                 <label for="confirmNewPassword">Confirm New Password:</label>
                 <input type="password" name="confirmNewPassword" id="confirmNewPassword" required>
             </div>
-            <button type="submit">Save</button>
+            <button type="submit">></button>
         </form>
     </article>
 

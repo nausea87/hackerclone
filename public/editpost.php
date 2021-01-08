@@ -1,13 +1,13 @@
-<?php require __DIR__ . '/views/header.php'; ?>
+<?php require __DIR__ . '/views/header.php';
 
-<?php if (!userIsLoggedIn()) {
+if (!userIsLoggedIn()) {
     redirect('/');
 } ?>
 
 <?php showErrorsAndMessages(); ?>
 
 <section class="edit-post">
-<h1>Edit Post</h1>
+    <h1>Edit Post</h1>
     <?php if (isset($_GET['id'])) : ?>
         <?php if (getPostById($pdo, $_GET['id'])) : ?>
             <?php $post = getPostById($pdo, $_GET['id']); ?>

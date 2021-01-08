@@ -1,5 +1,5 @@
 body {
-  background-color: #bff7bf;
+  background-color: white;
 }
 
 p {
@@ -7,7 +7,7 @@ p {
 }
 
 button {
-  border: 1px solid black;
+  border: 2px solid black;
   height: 2em;
   font-size: 14px;
   margin: 12px 0;
@@ -19,13 +19,13 @@ button {
 }
 
 .form-section input {
-  border: 1px solid black;
+  border: 2px solid black;
   width: 100%;
   height: 2em;
 }
 
 textarea {
-  border: 3px solid black;
+  border: 2px solid black;
   font-size: 14px;
 }
 
@@ -44,14 +44,14 @@ textarea {
 .errors {
   width: 100%;
   position: absolute;
-  background-color: rgb(247, 210, 210);
+  background-color: white;
   color: white;
 }
 
 .messages {
   width: 100%;
   position: absolute;
-  background-color: rgb(41, 151, 41);
+  background-color: white;
   color: white;
 }
 
