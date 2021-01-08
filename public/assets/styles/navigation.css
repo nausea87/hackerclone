@@ -9,10 +9,10 @@ nav {
   height: 10vh;
 }
 
-.nav-list {
+.nav-links {
   display: flex;
   justify-content: space-between;
-  margin: 0;
+  margin: 2;
   width: 100%;
   padding: 0 10px;
 }
