@@ -1,0 +1,37 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile .user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile .user-info .avatar-container {
+  height: 120px;
+  width: 120px;
+}
+
+.profile .bio-container {
+  width: calc(100% - 150px);
+}
+
+.followers-container {
+  display: flex;
+  width: 100vw;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.followers {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+}
+
+.followers p {
+  margin: auto;
+}
