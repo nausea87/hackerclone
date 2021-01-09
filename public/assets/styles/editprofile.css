@@ -8,12 +8,14 @@
 .edit-profile .avatar-container {
   height: 150px;
   width: 150px;
+  border: 2px solid rgb(90, 194, 90);
+  border-radius: 25%;
 }
 
 .edit-profile form {
   display: none;
   width: 100%;
-  background-color: white;
+  background-color: black;
 }
 
 .edit-profile .form-section {
@@ -33,7 +35,7 @@
 
 .edit-profile .flex-row {
   width: 100%;
-  border: 2px solid black;
+  border: 2px solid rgb(90, 194, 90);
   padding: 0 20px;
   display: flex;
   justify-content: space-between;

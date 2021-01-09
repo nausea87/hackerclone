@@ -4,21 +4,30 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: white;
+  background: black;
   width: 100%;
   height: 10vh;
+}
+
+nav a {
+  color: rgb(90, 194, 90);
+  font-size: larger;
 }
 
 .nav-links {
   display: flex;
   justify-content: space-between;
-  margin: 2;
+  margin: 2px;
   width: 100%;
-  padding: 0 10px;
+  padding: 0 20px;
 }
 
+/* For desktop */
 @media (min-width: 1024px) {
   nav {
     position: static;
+  }
+  nav a {
+    font-size: x-large;
   }
 }

@@ -1,19 +1,15 @@
 "use_strict";
 
 const messages = document.querySelectorAll(".messages");
-
-//remove messages after 1.5s
 messages.forEach(message => {
     setTimeout(() => {
         message.parentElement.removeChild(message);
-    }, 1500);
+    }, 2000);
 });
 
 //COMMENTS
-
 const commentForms = document.querySelectorAll(".comment-form");
 const showCommentsForms = document.querySelectorAll(".show-comments-form");
-
 const createCommentTemplate = (
     userId,
     avatar,
@@ -206,9 +202,7 @@ showFormButtons.forEach(btn => {
 });
 
 // LIKE JS
-
 "use strict";
-
 const formatLikes = numberOfLikes => {
     const int = Number(numberOfLikes);
     if (int === 0) {
@@ -251,16 +245,13 @@ likeForms.forEach(likeForm => {
 
 
 // REPLIES
-
-
-
 "use_strict";
 
 const createReplyTemplate = (userId, avatar, username, reply) => {
     return `<a href="/profile.php?id=${userId}">
-    <div class="avatar-container">
-    <img class="avatar" src="/uploads/avatars/${avatar}" alt="avatar">
-    </div>
+      <div class="avatar-container">
+       <img class="avatar" src="/uploads/avatars/${avatar}" alt="avatar">
+      </div>
     </a>
     <p><a href="/profile.php?id=${userId}"><span>${username}</span></a>${reply}</p>`;
 };
@@ -275,16 +266,13 @@ const createReplyButtonText = numberOfReplies => {
     }
 };
 
-//add eventlistener to reply-button to show/hide all replies and the reply-form
 const activateReplyButton = showRepliesForm => {
     showRepliesForm.addEventListener("submit", event => {
         event.preventDefault();
-        //show/hide reply-form
         const replyForm = event.target.parentElement.querySelector(
             ".reply-form"
         );
         replyForm.classList.toggle("visible");
-        //fetch all replies to the comment
         const formData = new FormData(showRepliesForm);
         fetch("http://localhost:8000/app/posts/showreplies.php", {
             method: "POST",
@@ -294,7 +282,7 @@ const activateReplyButton = showRepliesForm => {
                 return response.json();
             })
             .then(json => {
-                //display problems with invalid $_POST data
+              
                 if (json.valid === false) {
                     window.alert(json.errors);
                 } else {
@@ -305,7 +293,7 @@ const activateReplyButton = showRepliesForm => {
                         ".reply-list"
                     );
                     if (replyButton.classList.contains("active") === false) {
-                        //append all replies to the reply-list
+                       
                         json.replies.forEach(response => {
                             const replyTemplate = createReplyTemplate(
                                 response.user_id,
@@ -318,11 +306,11 @@ const activateReplyButton = showRepliesForm => {
                             reply.innerHTML = replyTemplate;
                             replyList.appendChild(reply);
                         });
-                        //add active class and change button text
+                      
                         replyButton.classList.add("active");
                         replyButton.textContent = "hide replies";
                     } else {
-                        //hide replies, remove active class and change text of reply-button
+                        
                         replyList.innerHTML = "";
                         replyButton.classList.remove("active");
                         replyButton.textContent = createReplyButtonText(
@@ -334,7 +322,6 @@ const activateReplyButton = showRepliesForm => {
     });
 };
 
-//add eventlistener to form to create reply and append it to the reply-list
 const activateReplyForm = replyForm => {
     replyForm.addEventListener("submit", event => {
         event.preventDefault();
@@ -347,11 +334,11 @@ const activateReplyForm = replyForm => {
                 return reply.json();
             })
             .then(json => {
-                //display problems with invalid $_POST data
+               
                 if (json.valid === false) {
                     window.alert(json.errors);
                 } else {
-                    //append new reply to the reply-list
+                    
                     const replyList = event.target.parentElement.querySelector(
                         ".reply-list"
                     );

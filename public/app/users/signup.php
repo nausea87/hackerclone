@@ -42,7 +42,6 @@ if (
         ':password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
-    //login the user when account is created
     $id = $pdo->lastInsertId();
     $_SESSION['user']['id'] = $id;
     $_SESSION['greeting'] = "Welcome $username!";

@@ -16,6 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: rgb(90, 194, 90);
 }
 
 .post .avatar-username-container h2 {
@@ -25,6 +26,8 @@
 .post .user-container .avatar-container {
   height: 50px;
   width: 50px;
+  border: 2px solid rgb(90, 194, 90);
+  border-radius: 25%;
 }
 
 .post .like-box {
@@ -35,6 +38,7 @@
 .post-image-container {
   width: 100%;
   height: 50vh;
+  border: 1px solid rgb(90, 194, 90);
 }
 
 .post-image-container .post-image {
@@ -68,17 +72,18 @@
 }
 
 .comment .comment-container {
-  background-color: #f7e9bf;
-  border-radius: 5px 5px 5px 5px;
-  margin: 3px;
-  padding: 5px;
   display: flex;
   align-items: center;
+  background-color: black;
+  margin: 0;
+  padding: 5px 5px;
 }
 
 .comment .comment-container .avatar-container {
   height: 35px;
   width: 35px;
+  border: 1px solid rgb(90, 194, 90);
+  border-radius: 25%;
 }
 
 .comment .comment-container p {
@@ -88,7 +93,7 @@
 
 .comment .comment-container p span {
   margin: 0 5px;
-  color: #3e3ea3;
+  color: green;
   font-size: 18px;
 }
 
@@ -99,9 +104,10 @@
 .comment .show-replies-form button {
   margin: 0 5px;
   border: none;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: black;
+  color: rgb(90, 194, 90);
   height: 1em;
-  font-size: 11px;
+  font-size: 12px;
   padding: 0;
 }
 
@@ -110,6 +116,7 @@
   display: none;
   justify-content: center;
   align-items: center;
+  color: rgb(90, 194, 90);
 }
 
 .comment .visible {
@@ -134,10 +141,9 @@
 .reply {
   display: flex;
   align-items: center;
-  background-color: #c7c7e7;
+  background-color: black;
   padding: 0;
   margin: 4px;
-  border-radius: 5px 5px 5px 5px;
 }
 
 .reply .avatar-container {
@@ -147,6 +153,7 @@
 
 .reply p {
   margin: 0;
+  color: rgb(90, 194, 90);
 }
 
 .reply p span {
@@ -155,7 +162,9 @@
 
 @media (min-width: 1024px) {
   .post {
-    border-left: 2px solid black;
-    border-right: 2px solid black;
+    border-left: 2px solid rgb(90, 194, 90);
+    border-right: 2px solid rgb(90, 194, 90);
+    border-top: 2px solid rgb(90, 194, 90);
+    border-bottom: 2px solid rgb(90, 194, 90);
   }
 }

@@ -1,5 +1,5 @@
 <nav>
-    <ul class="nav-list">
+    <ul class="nav-links">
         <li><a href="/index.php">Home</a></li>
         <!-- Views for logged in user profile only. Else redirect to Login page--->
 

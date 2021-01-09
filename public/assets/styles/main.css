@@ -1,31 +1,44 @@
 body {
-  background-color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-color: black;
 }
 
 p {
   font-size: 16px;
+  color: rgb(90, 194, 90);
 }
 
+h1 {
+  color: rgb(90, 194, 90);
+}
+
+h2 {
+  color: rgb(90, 194, 90);
+}
+
+/* Fix heart emote for like button later */
 button {
-  border: 2px solid black;
   height: 2em;
-  font-size: 14px;
+  font-size: 12px;
   margin: 12px 0;
 }
 
 .form-section {
   display: flex;
   flex-direction: column;
+  color: rgb(90, 194, 90);
 }
 
 .form-section input {
-  border: 2px solid black;
   width: 100%;
   height: 2em;
 }
 
 textarea {
-  border: 2px solid black;
+  /*For comments & replies */
+  background-color: black;
+  color: rgb(90, 194, 90);
+  border: 2px solid rgb(90, 194, 90);
   font-size: 14px;
 }
 
@@ -44,22 +57,25 @@ textarea {
 .errors {
   width: 100%;
   position: absolute;
-  background-color: white;
-  color: white;
+  background-color: black;
+  color: rgb(90, 194, 90);
 }
 
 .messages {
-  width: 100%;
+  width: 100px;
   position: absolute;
-  background-color: white;
-  color: white;
+  background-color: black;
+  color: rgb(90, 194, 90);
 }
 
+/* Make hover effect? */
 a {
   text-decoration: none;
+  transform: rotate(360deg);
+  transition-duration: 5s;
 }
 
-/* Mobil */
+/* Mobile props */
 @media (min-width: 1024px) {
   .wrapper {
     width: 40vw;

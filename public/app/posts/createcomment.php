@@ -30,17 +30,6 @@ if (isset($_POST['comment'], $_POST['id'])) {
         exit;
     }
 
-    if (strlen($comment) > 140 || strlen($comment) === 0) {
-        $valid = false;
-        $errors = "comment has to bee between 1-140 characters";
-        $response = [
-            'valid' => $valid,
-            'errors' => $errors
-        ];
-        echo json_encode($response);
-        exit;
-    }
-
     $statement = $pdo->prepare('INSERT INTO comments (user_id, post_id, comment) VALUES (:user_id, :post_id, :comment)');
     if (!$statement) {
         $valid = false;

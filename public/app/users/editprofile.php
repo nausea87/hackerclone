@@ -26,7 +26,7 @@ if (isset($_FILES['image'])) {
     }
 
     //Fix
-    // if ($user['avatar'] !== 'default_avatar.jpeg') {
+    // if ($user['avatar'] !== 'default.jpeg') {
     //     unlink(__DIR__ . '/../../uploads/avatars/' . $user['avatar']);
     // }
 
@@ -119,14 +119,9 @@ if (isset($_POST['oldPassword'], $_POST['newPassword'], $_POST['confirmNewPasswo
     }
 
     if ($oldPassword === $newPassword) {
-        $_SESSION['errors'] = "old and new passwords are the same";
+        $_SESSION['errors'] = "This is already your current password";
         redirect('/editprofile.php');
     }
-
-    // if (strlen($newPassword) < 6) {
-    //     $_SESSION['errors'] = 'password has to be at least 6 characters long';
-    //     redirect('/editprofile.php');
-    // }
 
     $statement = $pdo->prepare('UPDATE users SET password = :password WHERE id = :id');
     pdoErrorInfo($pdo, $statement);

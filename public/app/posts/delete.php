@@ -27,7 +27,7 @@ if (isset($_POST['id'])) {
 
     $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    //delete all comments and replies
+    //Comments & Replies
     foreach ($comments as $comment) {
         $commentId = $comment['id'];
 
@@ -46,7 +46,7 @@ if (isset($_POST['id'])) {
         ]);
     }
 
-    //delete likes
+    //Like
     $statement = $pdo->prepare('DELETE FROM likes WHERE post_id = :postId');
     pdoErrorInfo($pdo, $statement);
 
@@ -54,7 +54,7 @@ if (isset($_POST['id'])) {
         ':postId' => $post['id']
     ]);
 
-    //delete post
+    //Post
     $statement = $pdo->prepare('DELETE FROM posts WHERE id = :postId');
     pdoErrorInfo($pdo, $statement);
 

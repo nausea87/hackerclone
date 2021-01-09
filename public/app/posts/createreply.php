@@ -11,27 +11,13 @@ if (!userIsLoggedIn()) {
 header('Content-Type: application/json');
 
 if (isset($_POST['id'], $_POST['reply'])) {
-    //FILTER_FLAG_NO_ENCODE_QUOTES to solve problem with "'" counting as 5 characters.
     $reply = filter_var(trim($_POST['reply']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
     $commentId = trim(filter_var($_POST['id'], FILTER_SANITIZE_STRING));
-
-    //for the json response to show if $_POST data was valid
     $valid = true;
 
     if (!existsInDatabase($pdo, 'comments', 'id', $commentId)) {
         $valid = false;
         $errors = "comment doesn't exist";
-        $response = [
-            'valid' => $valid,
-            'errors' => $errors
-        ];
-        echo json_encode($response);
-        exit;
-    }
-
-    if (strlen($reply) > 140 || strlen($reply) === 0) {
-        $valid = false;
-        $errors = "reply has to bee between 1-140 characters";
         $response = [
             'valid' => $valid,
             'errors' => $errors
