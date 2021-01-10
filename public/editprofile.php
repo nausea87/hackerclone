@@ -34,7 +34,9 @@
         </div>
         <form action="app/users/editprofile.php" method="post">
             <div class="form-section">
-                <label for="username">New Username:</label>
+                <label for="username">
+                    <p>New Username:</p>
+                </label>
                 <input type="text" name="username" id="username" required>
                 <button type="submit">></button>
             </div>
@@ -49,8 +51,10 @@
         </div>
         <form action="app/users/editprofile.php" method="post">
             <div class="flex-column">
-                <label for="biography">Update Biography:</label>
-                <textarea maxlength="140" name="biography" id="biography" cols="50" rows="3" required><?php echo isset($user['biography']) ? $user['biography'] : ''; ?></textarea>
+                <label for="biography">
+                    <p> Biography:</p>
+                </label>
+                <textarea class="bio-container" maxlength="140" name="biography" id="biography" cols="40" rows="3" required><?php echo isset($user['biography']) ? $user['biography'] : ''; ?></textarea>
                 <button type="submit">></button>
             </div>
         </form>
@@ -64,7 +68,9 @@
         </div>
         <form action="app/users/editprofile.php" method="post">
             <div class="form-section">
-                <label for="email">Update email:</label>
+                <label for="email">
+                    <p>Update email:</p>
+                </label>
                 <input type="email" name="email" id="email" required>
                 <button type="submit">></button>
             </div>

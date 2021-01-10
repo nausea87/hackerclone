@@ -46,7 +46,6 @@ if (isset($_FILES['image'], $_POST['id'])) {
 }
 
 if (isset($_POST['description'], $_POST['id'])) {
-    //FILTER_FLAG_NO_ENCODE_QUOTES to solve problem with "'" counting as 5 characters.
     $description = filter_var(trim($_POST['description']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
     $post = getPostById($pdo, $_POST['id']);
 
@@ -55,10 +54,10 @@ if (isset($_POST['description'], $_POST['id'])) {
         redirect('/');
     }
 
-    if (strlen($description) > 140) {
-        $_SESSION['errors'] = "Description is too long, 140 characters is max";
-        redirect('/editpost.php?id=' . $post['id']);
-    }
+    // if (strlen($description) > 140) {
+    //     $_SESSION['errors'] = "Description is too long, 140 characters is max";
+    //     redirect('/editpost.php?id=' . $post['id']);
+    // }
 
     $statement = $pdo->prepare('UPDATE posts SET description = :description WHERE id = :postId');
     pdoErrorInfo($pdo, $statement);
@@ -68,7 +67,7 @@ if (isset($_POST['description'], $_POST['id'])) {
         ':postId' => $post['id']
     ]);
 
-    $_SESSION['messages'] = 'Description updated';
+    $_SESSION['messages'] = 'Text updated';
 
     redirect('/editpost.php?id=' . $post['id']);
 }

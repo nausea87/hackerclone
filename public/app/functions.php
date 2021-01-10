@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+// 'Exists' functions from guide 
 if (!function_exists('redirect')) {
     /**
      * Redirect the user to given path.
@@ -30,6 +31,8 @@ function pdoErrorInfo(PDO $pdo, $statement): void
         die(var_dump($pdo->errorInfo()));
     }
 }
+
+
 
 /**
  * check if SESSION user is set
@@ -75,7 +78,10 @@ function existsInDatabase(PDO $pdo, string $table, string $column, $value): bool
  */
 function getAllPosts(PDO $pdo): array
 {
-    $statement = $pdo->query('SELECT posts.*, users.username, users.avatar FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY posts.date DESC');
+    $statement = $pdo->query('SELECT posts.*, users.username, users.avatar FROM posts 
+    INNER JOIN users 
+    ON posts.user_id = users.id 
+    ORDER BY posts.date DESC');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
@@ -95,6 +101,7 @@ function getAllPosts(PDO $pdo): array
  */
 function getUserById(PDO $pdo, string $userId)
 {
+    // Getting user info
     $statement = $pdo->prepare('SELECT fullname, username, email, avatar, biography FROM users WHERE id = :id');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));

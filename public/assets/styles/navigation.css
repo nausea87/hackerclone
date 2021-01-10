@@ -11,10 +11,10 @@ nav {
 
 nav a {
   color: rgb(90, 194, 90);
-  font-size: larger;
+  font-size: 1rem;
 }
 
-.nav-links {
+.navlinks {
   display: flex;
   justify-content: space-between;
   margin: 2px;
@@ -22,12 +22,11 @@ nav a {
   padding: 0 20px;
 }
 
-/* For desktop */
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   nav {
     position: static;
   }
   nav a {
-    font-size: x-large;
+    font-size: 2rem;
   }
 }

@@ -7,14 +7,14 @@
     <form action="app/users/login.php" method="post">
         <div class="form-section">
             <label for="email">Email</label>
-            <input type="email" name="email" placeholder="youremail@mail.com" required>
-            <small>Enter your email address.</small>
+            <input type="email" name="email" placeholder="email@gmail.com" required>
+
         </div>
 
         <div class="form-section">
             <label for="password">Password</label>
-            <input type="password" name="password" required>
-            <small>Enter your password.</small>
+            <input type="password" name="password" placeholder="password" required>
+
         </div>
 
         <button type="submit">Login</button>

@@ -11,6 +11,7 @@
     <?php $user = getUserById($pdo, $_SESSION['user']['id']); ?>
     <?php foreach (getAllPosts($pdo) as $post) : ?>
         <article class="post">
+
             <div class="user-container">
                 <a href="/profile.php?id=<?php echo $post['user_id']; ?>">
                     <div class="avatar-username-container">
@@ -98,7 +99,7 @@
     <?php endforeach; ?>
 
 <?php else : ?>
-    <h1>Welcome to the world...</h1>
+    <h1>Welcome to the truth...</h1>
     <h2>Create account:</h2>
 
     <form action="app/users/signup.php" method="post">

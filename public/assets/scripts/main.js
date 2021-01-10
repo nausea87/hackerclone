@@ -4,7 +4,7 @@ const messages = document.querySelectorAll(".messages");
 messages.forEach(message => {
     setTimeout(() => {
         message.parentElement.removeChild(message);
-    }, 2000);
+    }, 1000);
 });
 
 //COMMENTS

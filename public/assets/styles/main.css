@@ -1,5 +1,6 @@
 body {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background-color: black;
 }
 
@@ -18,9 +19,11 @@ h2 {
 
 /* Fix heart emote for like button later */
 button {
-  height: 2em;
+  height: 2.5em;
   font-size: 12px;
-  margin: 12px 0;
+  margin: 5px 5px;
+  color: rgb(90, 194, 90);
+  background-color: black;
 }
 
 .form-section {
@@ -58,7 +61,7 @@ textarea {
   width: 100%;
   position: absolute;
   background-color: black;
-  color: rgb(90, 194, 90);
+  color: rgb(209, 56, 45);
 }
 
 .messages {
@@ -70,9 +73,8 @@ textarea {
 
 /* Make hover effect? */
 a {
+  font-size: 1rem;
   text-decoration: none;
-  transform: rotate(360deg);
-  transition-duration: 5s;
 }
 
 /* Mobile props */
@@ -86,5 +88,8 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  a {
+    font-size: 1.5rem;
   }
 }

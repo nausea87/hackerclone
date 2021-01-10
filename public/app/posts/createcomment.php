@@ -11,12 +11,9 @@ if (!userIsLoggedIn()) {
 header('Content-Type: application/json');
 
 if (isset($_POST['comment'], $_POST['id'])) {
-    //FILTER_FLAG_NO_ENCODE_QUOTES to solve problem with "'" counting as 5 characters.
     $comment = filter_var(trim($_POST['comment']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
     $postId = trim(filter_var($_POST['id'], FILTER_SANITIZE_STRING));
     $user = getUserById($pdo, $_SESSION['user']['id']);
-
-    //for the json response to show if $_POST data was valid
     $valid = true;
 
     if (!existsInDatabase($pdo, 'posts', 'id', $postId)) {
@@ -48,7 +45,6 @@ if (isset($_POST['comment'], $_POST['id'])) {
         ':comment' => $comment
     ]);
 
-    //get last added comment and commenter for the json response
     $statement = $pdo->prepare('SELECT * FROM comments WHERE id = :id');
     if (!$statement) {
         $valid = false;

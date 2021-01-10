@@ -18,6 +18,7 @@
   background-color: black;
 }
 
+/* Text colors */
 .edit-profile .form-section {
   padding: 0 20px;
   flex-direction: row;
@@ -31,11 +32,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: rgb(90, 194, 90);
 }
 
 .edit-profile .flex-row {
   width: 100%;
-  border: 2px solid rgb(90, 194, 90);
+  border: 1px solid rgb(90, 194, 90);
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
@@ -47,6 +49,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/* Font-fam */
+.edit-profile .bio-container {
+  color: black;
+  background-color: white;
+  border: 0;
 }
 
 .edit-profile .visible {
