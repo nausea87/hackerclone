@@ -55,7 +55,8 @@ if (isset($_POST['id'])) {
 
         $_SESSION['messages'] = 'Reply deleted';
         redirect('/profile.php?id=' . $id);
-        //////////////////////////////////
+
+
         $statement = $pdo->prepare('DELETE FROM comments WHERE id = :commentId');
         pdoErrorInfo($pdo, $statement);
 
@@ -74,6 +75,13 @@ if (isset($_POST['id'])) {
     $statement->execute([
         ':postId' => $post['id']
     ]);
+
+
+    //DELETE ACC
+
+
+
+
 }
 
 redirect('/');

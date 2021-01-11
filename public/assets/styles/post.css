@@ -1,3 +1,8 @@
+.title {
+  display: flex;
+  justify-content: center;
+}
+
 .post {
   display: flex;
   flex-direction: column;
@@ -28,6 +33,12 @@
   width: 50px;
   border: 2px solid rgb(90, 194, 90);
   border-radius: 25%;
+}
+
+.post .date p {
+  font-style: italic;
+  font-size: 0.8rem;
+  margin: 10px;
 }
 
 .post .like-box {
@@ -90,6 +101,12 @@
   max-width: calc(100% - 40px);
   margin: 2px 0;
 }
+
+/* .comment .date p {
+  font-style: italic;
+  font-size: 0.5rem;
+  margin: 10px;
+} */
 
 .comment .comment-container p span {
   margin: 0 5px;

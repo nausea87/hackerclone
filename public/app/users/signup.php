@@ -16,12 +16,12 @@ if (
     $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
-
+    // Confirm password
     if ($password !== $confirmPassword) {
         $_SESSION['errors'] = "The passwords do not match";
         redirect('/');
     }
-
+    // No conflicts
     if (existsInDatabase($pdo, 'users', 'email', $email)) {
         $_SESSION['errors'] = "email is already registered";
         redirect('/');
@@ -30,7 +30,7 @@ if (
     if (!isValidUsername($pdo, $username)) {
         redirect('/');
     }
-
+ 
     $statement = $pdo->prepare('INSERT INTO users (fullname, username, email, password) 
     VALUES (:fullname, :username, :email, :password)');
     pdoErrorInfo($pdo, $statement);

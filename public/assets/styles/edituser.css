@@ -1,32 +1,38 @@
-.edit-profile {
+.edit-user {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.edit-profile .avatar-container {
-  height: 150px;
-  width: 150px;
+.edit-user .avatar-container {
   border: 2px solid rgb(90, 194, 90);
   border-radius: 25%;
+  height: 100px;
+  width: 100px;
+  margin: 10px;
 }
 
-.edit-profile form {
+.edit-user form {
   display: none;
   width: 100%;
   background-color: black;
 }
 
 /* Text colors */
-.edit-profile .form-section {
+.edit-user .form-section {
   padding: 0 20px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.edit-profile article {
+.edit-user .form-section p {
+  font-size: 0.6rem;
+  margin: 2px;
+}
+
+.edit-user article {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -35,7 +41,7 @@
   color: rgb(90, 194, 90);
 }
 
-.edit-profile .flex-row {
+.edit-user .flex-row {
   width: 100%;
   border: 1px solid rgb(90, 194, 90);
   padding: 0 20px;
@@ -44,20 +50,37 @@
   align-items: center;
 }
 
-.edit-profile .flex-column {
+.edit-user .flex-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.edit-user .flex-column p {
+  font-size: 0.8rem;
+}
+
 /* Font-fam */
-.edit-profile .bio-container {
+.edit-user .bio-container {
   color: black;
   background-color: white;
   border: 0;
 }
 
-.edit-profile .visible {
+.edit-user .visible {
   display: block;
 }
+
+/* .delete .delete-account {
+  margin: 10px;
+  background-color: rgb(197, 78, 78);
+  height: 60px;
+  width: 100px;
+}
+
+.delete .delete-account p {
+  margin: 5px 5px 5px 5px;
+  color: black;
+  font-weight: bolder;
+} */

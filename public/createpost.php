@@ -9,6 +9,10 @@ if (!userIsLoggedIn()) {
 <form action="app/posts/store.php" method="post" enctype="multipart/form-data">
 
     <div class="form-section">
+        <label for="image">Title:</label>
+        <textarea name="title" id="title" cols="30" rows="1"></textarea>
+    </div>
+    <div class="form-section">
         <label for="image">Image:</label>
         <input class="input-file" type="file" name="image" id="image" accept=".jpg, .jpeg, .png" required>
     </div>

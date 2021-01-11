@@ -1,5 +1,5 @@
 <?php require __DIR__ . '/views/header.php'; ?>
-
+<!-- TODO: Fix link to individual (click a title) posts for forum feel -->
 <?php showErrorsAndMessages(); ?>
 <?php if (userIsLoggedIn()) : ?>
 
@@ -21,13 +21,21 @@
                         <h2 class="username"><?php echo $post['username']; ?></h2>
                     </div>
                 </a>
-                <p><?php echo $post['date']; ?></p>
+                <div class="date">
+                    <p><?php echo $post['date']; ?></p>
+                </div>
+            </div>
+            <!-- Fix title -->
+            <div class="title">
+                <p><?php echo $post['title']; ?></p>
             </div>
 
+            <!-- Images -->
             <div class="post-image-container">
                 <img class="post-image" src="/uploads/posts/<?php echo $post['image']; ?>" alt="post image">
             </div>
 
+            <!--Likes -->
             <div class="like-box">
                 <form class="like-form" action="app/posts/likes.php">
                     <input type="hidden" name="id" value="<?php echo $post['id'] ?>">
@@ -67,7 +75,10 @@
                             </li>
 
                             <form class="show-replies-form" action="app/posts/showreplies.php" method="post">
-                                <input type="hidden" name="id" value="<?php echo $comment['id'] ?>">
+                                <input type="hidden" name="id" value="<?php echo $comment['id']; ?>">
+
+                                <!-- // Date for comments & replies scuffed af. TODO -->
+
                                 <button class="reply-button" type="submit">
                                     <?php echo getReplyButtonText($pdo, $comment['id']); ?>
                                 </button>

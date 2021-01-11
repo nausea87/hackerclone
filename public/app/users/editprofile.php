@@ -10,10 +10,15 @@ if (!userIsLoggedIn()) {
 
 $id = $_SESSION['user']['id'];
 
+
+
 if (isset($_FILES['image'])) {
     $image = $_FILES['image'];
     $user = getUserById($pdo, $id);
 
+
+
+    // Avatars
     if (!isValidImage($image)) {
         redirect('/editprofile.php');
     }
@@ -21,14 +26,9 @@ if (isset($_FILES['image'])) {
     $fileName = createFileName($image['type']);
 
     if (!move_uploaded_file($image['tmp_name'], '../../uploads/avatars/' . $fileName)) {
-        $_SESSION['errors'] = "Something went wrong with the upload";
+        $_SESSION['errors'] = "Oopsie!";
         redirect('/editprofile.php');
     }
-
-    //Fix
-    // if ($user['avatar'] !== 'default.jpeg') {
-    //     unlink(__DIR__ . '/../../uploads/avatars/' . $user['avatar']);
-    // }
 
     $statement = $pdo->prepare('UPDATE users SET avatar = :avatar WHERE id = :id');
     pdoErrorInfo($pdo, $statement);
@@ -65,14 +65,6 @@ if (isset($_POST['username'])) {
 
 if (isset($_POST['biography'])) {
     $biography = filter_var(trim($_POST['biography']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-    if (strlen($biography) > 140) {
-        $_SESSION['errors'] = "Biography is too long, 140 characters is max";
-        redirect('/editprofile.php');
-    }
-
-    if (strlen($biography) === 0) {
-        $biography = NULL;
-    }
 
     $statement = $pdo->prepare('UPDATE users SET biography = :biography WHERE id = :id');
     pdoErrorInfo($pdo, $statement);
@@ -82,16 +74,16 @@ if (isset($_POST['biography'])) {
         ':id' => $id
     ]);
 
-    $_SESSION['messages'] = "bio updated";
-
+    $_SESSION['messages'] = "Biography updated";
     redirect('/editprofile.php');
 }
 
+// EMAIL
 if (isset($_POST['email'])) {
     $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
 
     if (existsInDatabase($pdo, 'users', 'email', $email)) {
-        $_SESSION['errors'] = "email is already registered";
+        $_SESSION['errors'] = "This email is not avalible";
         redirect('/');
     }
 
@@ -103,21 +95,22 @@ if (isset($_POST['email'])) {
         ':id' => $id
     ]);
 
-    $_SESSION['messages'] = "email updated";
+    $_SESSION['messages'] = "Email updated";
 
     redirect('/editprofile.php');
 }
 
+//PASSWORD
 if (isset($_POST['oldPassword'], $_POST['newPassword'], $_POST['confirmNewPassword'])) {
     $oldPassword = $_POST['oldPassword'];
     $newPassword = $_POST['newPassword'];
     $confirmNewPassword = $_POST['confirmNewPassword'];
 
     if ($newPassword !== $confirmNewPassword) {
-        $_SESSION['errors'] = "passwords are not the same";
+        $_SESSION['errors'] = "Passwords do not match";
         redirect('/editprofile.php');
     }
-
+    // Has to be new password
     if ($oldPassword === $newPassword) {
         $_SESSION['errors'] = "This is already your current password";
         redirect('/editprofile.php');
@@ -127,11 +120,11 @@ if (isset($_POST['oldPassword'], $_POST['newPassword'], $_POST['confirmNewPasswo
     pdoErrorInfo($pdo, $statement);
 
     $statement->execute([
-        ':password' => password_hash($newPassword, PASSWORD_DEFAULT),
+        ':password' => password_hash($newPassword, PASSWORD_BCRYPT),
         ':id' => $id
     ]);
 
-    $_SESSION['messages'] = "password updated";
+    $_SESSION['messages'] = "Password updated";
 
     redirect('/editprofile.php');
 }

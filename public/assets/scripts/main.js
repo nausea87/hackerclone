@@ -1,5 +1,5 @@
 "use_strict";
-
+// To remove comments a second
 const messages = document.querySelectorAll(".messages");
 messages.forEach(message => {
     setTimeout(() => {
@@ -7,7 +7,7 @@ messages.forEach(message => {
     }, 1000);
 });
 
-//COMMENTS
+//Generate comment form
 const commentForms = document.querySelectorAll(".comment-form");
 const showCommentsForms = document.querySelectorAll(".show-comments-form");
 const createCommentTemplate = (
@@ -189,7 +189,6 @@ if (deletePostForm !== null) {
 // PROFILE EDITS
 
 "use_strict";
-
 const showFormButtons = document.querySelectorAll(".show-form-button");
 
 showFormButtons.forEach(btn => {
@@ -201,7 +200,7 @@ showFormButtons.forEach(btn => {
     });
 });
 
-// LIKE JS
+// Like formatting
 "use strict";
 const formatLikes = numberOfLikes => {
     const int = Number(numberOfLikes);

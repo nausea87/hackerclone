@@ -5,7 +5,7 @@
 } ?>
 
 <?php showErrorsAndMessages(); ?>
-<section class="edit-profile">
+<section class="edit-user">
 
     <h1>Edit Profile</h1>
     <?php $user = getUserById($pdo, $_SESSION['user']['id']); ?>
@@ -52,7 +52,7 @@
         <form action="app/users/editprofile.php" method="post">
             <div class="flex-column">
                 <label for="biography">
-                    <p> Biography:</p>
+                    <p>Biography:</p>
                 </label>
                 <textarea class="bio-container" maxlength="140" name="biography" id="biography" cols="40" rows="3" required><?php echo isset($user['biography']) ? $user['biography'] : ''; ?></textarea>
                 <button type="submit">></button>
@@ -76,7 +76,7 @@
             </div>
         </form>
     </article>
-
+    <!-- Update acc info -->
     <article>
         <div class="flex-row">
             <p>Password:</p>
@@ -85,20 +85,30 @@
         </div>
         <form action="app/users/editprofile.php" method="post">
             <div class="form-section">
-                <label for="oldPassword">Old Password:</label>
+                <label for="oldPassword">
+                    <p>Current Password:</p>
+                </label>
                 <input type="password" name="oldPassword" id="oldPassword" required>
             </div>
             <div class="form-section">
-                <label for="newPassword">New Password:</label>
+                <label for="newPassword">
+                    <p>New Password:</p>
+                </label>
                 <input type="password" name="newPassword" id="newPassword" required>
             </div>
             <div class="form-section">
-                <label for="confirmNewPassword">Confirm New Password:</label>
+                <label for="confirmNewPassword">
+                    <p>Confirm New Password:</p>
+                </label>
                 <input type="password" name="confirmNewPassword" id="confirmNewPassword" required>
             </div>
             <button type="submit">></button>
         </form>
     </article>
+
+
+    <!--FIX DELETE ACCOUNT -->
+
 
 
 </section>

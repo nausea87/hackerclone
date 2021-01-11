@@ -7,8 +7,9 @@ require __DIR__ . '/../autoload.php';
 if (!userIsLoggedIn()) {
     redirect('/');
 }
-
-if (isset($_POST['description'], $_FILES['image'])) {
+// Storing title, content, image from upload
+if (isset($_POST['title'], $_POST['description'], $_FILES['image'])) {
+    $title = filter_var(trim($_POST['title']), FILTER_SANITIZE_STRING);
     $description = filter_var(trim($_POST['description']), FILTER_SANITIZE_STRING);
     $image = $_FILES['image'];
     $id = $_SESSION['user']['id'];
@@ -24,7 +25,7 @@ if (isset($_POST['description'], $_FILES['image'])) {
         redirect('/createpost.php');
     }
 
-    $statement = $pdo->prepare('INSERT INTO posts (user_id, image, description) VALUES (:user_id, :image, :description)');
+    $statement = $pdo->prepare('INSERT INTO posts (user_id, image, description, title) VALUES (:user_id, :image, :description, :title)');
 
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
@@ -33,7 +34,9 @@ if (isset($_POST['description'], $_FILES['image'])) {
     $statement->execute([
         ':user_id' => $id,
         ':image' => $fileName,
+        ':title' => $title,
         ':description' => $description
+
     ]);
 
     // Redirect back to main after post successfull.
