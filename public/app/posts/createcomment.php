@@ -8,7 +8,7 @@ if (!userIsLoggedIn()) {
     redirect('/');
 }
 
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
 
 if (isset($_POST['comment'], $_POST['id'])) {
     $comment = filter_var(trim($_POST['comment']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
@@ -27,7 +27,8 @@ if (isset($_POST['comment'], $_POST['id'])) {
         exit;
     }
 
-    $statement = $pdo->prepare('INSERT INTO comments (user_id, post_id, comment) VALUES (:user_id, :post_id, :comment)');
+    $statement = $pdo->prepare('INSERT INTO comments (user_id, post_id, comment) 
+    VALUES (:user_id, :post_id, :comment)');
     if (!$statement) {
         $valid = false;
         $errors = $pdo->errorInfo();
