@@ -5,6 +5,20 @@ body {
   background-color: black;
 }
 
+.errors {
+  width: 100%;
+  position: absolute;
+  background-color: black;
+  color: rgb(209, 56, 45);
+}
+
+.messages {
+  width: 100px;
+  position: absolute;
+  background-color: black;
+  color: rgb(90, 194, 90);
+}
+
 p {
   font-size: 16px;
   color: rgb(90, 194, 90);
@@ -56,20 +70,6 @@ textarea {
   width: 100%;
   object-fit: cover;
   border-radius: 25%;
-}
-
-.errors {
-  width: 100%;
-  position: absolute;
-  background-color: black;
-  color: rgb(209, 56, 45);
-}
-
-.messages {
-  width: 100px;
-  position: absolute;
-  background-color: black;
-  color: rgb(90, 194, 90);
 }
 
 a {
