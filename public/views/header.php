@@ -10,7 +10,10 @@ require __DIR__ . '/../app/autoload.php';
 
     <title><?php echo $config['title']; ?></title>
 
-    <link rel="stylesheet" href="https://unpkg.com/sanitize.css">
+
+
+    <!--- unpkg.com -->
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css@12.0.1/sanitize.css">
     <!--Everything went bananas without sanitizing--->
     <link rel="stylesheet" href="/assets/styles/main.css">
     <link rel="stylesheet" href="/assets/styles/navigation.css">
