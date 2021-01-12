@@ -31,7 +31,7 @@ User should be able to:
 6. The project should contain the files and directories in the resources folder in the root of your repository.[X]
 7. The project should implement an accessible graphical user interface.[X]
 8. Declare strict types in PHP-only files.[X]
-9. No errors, warnings or notices.
+9. No errors, warnings or notices. [X]
 10. Tested on 2+ classmates. Add their names to the README.md
 11. The project must recieve a code review by another classmate. Atleast 10 comments with a pull request.
 
