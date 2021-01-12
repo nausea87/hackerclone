@@ -8,14 +8,14 @@ if (!userIsLoggedIn()) {
     redirect('/');
 }
 
-header('Content-Type: application/json');
+
 
 if (isset($_POST['id'])) {
     $postId = trim(filter_var($_POST['id'], FILTER_SANITIZE_STRING));
     $userId = $_SESSION['user']['id'];
 
-    // if like exist, delete it. If it doesnt, add it.
-    if (isLikedBy($pdo, $userId, $postId)) {
+    // + / -
+    if (postIsLiked($pdo, $userId, $postId)) {
         $deleteStatement = $pdo->prepare('DELETE FROM likes WHERE user_id = :userId AND post_id = :postId');
         if (!$deleteStatement) {
             die(var_dump($pdo->errorInfo()));

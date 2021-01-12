@@ -5,13 +5,13 @@
 
     <?php showErrorsAndMessages(); ?>
     <form action="app/users/login.php" method="post">
-        <div class="form-section">
+        <div class="formsection">
             <label for="email">Email</label>
             <input type="email" name="email" placeholder="email@gmail.com" required>
 
         </div>
 
-        <div class="form-section">
+        <div class="formsection">
             <label for="password">Password</label>
             <input type="password" name="password" placeholder="password" required>
 

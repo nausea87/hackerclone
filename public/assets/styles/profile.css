@@ -37,6 +37,18 @@
   justify-content: center;
 }
 
+/* Follow and unfollow buttons */
+.follow {
+  width: 70px;
+  height: 30px;
+}
+
+.unfollow {
+  color: red;
+  width: 70px;
+  height: 30px;
+}
+/* Followers p-tag */
 .followers {
   display: flex;
   width: 100%;

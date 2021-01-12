@@ -19,7 +19,7 @@
 
         <!--For edit profile avatar-->
         <form action="app/users/editprofile.php" method="post" enctype="multipart/form-data">
-            <div class="form-section">
+            <div class="formsection">
                 <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" required>
                 <button type="submit">></button>
             </div>
@@ -33,7 +33,7 @@
             <button class="show-form-button">Edit</button>
         </div>
         <form action="app/users/editprofile.php" method="post">
-            <div class="form-section">
+            <div class="formsection">
                 <label for="username">
                     <p>New Username:</p>
                 </label>
@@ -67,7 +67,7 @@
             <button class="show-form-button">Edit</button>
         </div>
         <form action="app/users/editprofile.php" method="post">
-            <div class="form-section">
+            <div class="formsection">
                 <label for="email">
                     <p>Update email:</p>
                 </label>
@@ -84,19 +84,19 @@
             <button class="show-form-button">Edit</button>
         </div>
         <form action="app/users/editprofile.php" method="post">
-            <div class="form-section">
+            <div class="formsection">
                 <label for="oldPassword">
                     <p>Current Password:</p>
                 </label>
                 <input type="password" name="oldPassword" id="oldPassword" required>
             </div>
-            <div class="form-section">
+            <div class="formsection">
                 <label for="newPassword">
                     <p>New Password:</p>
                 </label>
                 <input type="password" name="newPassword" id="newPassword" required>
             </div>
-            <div class="form-section">
+            <div class="formsection">
                 <label for="confirmNewPassword">
                     <p>Confirm New Password:</p>
                 </label>

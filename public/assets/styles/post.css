@@ -3,12 +3,19 @@
   justify-content: center;
 }
 
+.title p {
+  font-size: 1.4rem;
+  font-weight: bolder;
+  margin: 0;
+}
+
+/* Post container */
 .post {
   display: flex;
   flex-direction: column;
   border-top: 3px solid black;
   border-bottom: 1px solid black;
-  padding: 5px 0;
+  padding: 5px 5px;
 }
 
 .post .user-container {
@@ -48,14 +55,14 @@
 
 .post-image-container {
   width: 100%;
-  height: 50vh;
+  height: 75vh;
   border: 1px solid rgb(90, 194, 90);
 }
 
 .post-image-container .post-image {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: scale-down;
 }
 
 .post textarea {
@@ -75,107 +82,6 @@
 .post .comment-list {
   padding-left: 5px;
   margin: 0;
-}
-
-.comment-form .avatar-container {
-  height: 40px;
-  width: 40px;
-}
-
-.comment .comment-container {
-  display: flex;
-  align-items: center;
-  background-color: black;
-  margin: 0;
-  padding: 5px 5px;
-}
-
-.comment .comment-container .avatar-container {
-  height: 35px;
-  width: 35px;
-  border: 1px solid rgb(90, 194, 90);
-  border-radius: 25%;
-}
-
-.comment .comment-container p {
-  max-width: calc(100% - 40px);
-  margin: 2px 0;
-}
-
-/* .comment .date p {
-  font-style: italic;
-  font-size: 0.5rem;
-  margin: 10px;
-} */
-
-.comment .comment-container p span {
-  margin: 0 5px;
-  color: green;
-  font-size: 18px;
-}
-
-.comment .show-replies-form {
-  line-height: 1em;
-}
-
-.comment .show-replies-form button {
-  margin: 0 5px;
-  border: none;
-  background-color: black;
-  color: rgb(90, 194, 90);
-  height: 1em;
-  font-size: 12px;
-  padding: 0;
-}
-
-.comment .reply-form {
-  margin-left: 50px;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  color: rgb(90, 194, 90);
-}
-
-.comment .visible {
-  display: flex;
-}
-
-.comment .reply-form button {
-  margin: 0;
-  width: 50px;
-  padding: 0;
-}
-
-.comment .reply-form .avatar-container {
-  height: 30px;
-  width: 30px;
-}
-
-.comment .reply-list {
-  list-style: none;
-}
-
-.reply {
-  display: flex;
-  align-items: center;
-  background-color: black;
-  padding: 0;
-  margin: 4px;
-}
-
-.reply .avatar-container {
-  height: 20px;
-  width: 20px;
-}
-
-.reply p {
-  margin: 0;
-  color: rgb(90, 194, 90);
-}
-
-.reply p span {
-  margin: 0 7px;
-  color: green;
 }
 
 @media (min-width: 1200px) {

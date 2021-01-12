@@ -1,0 +1,82 @@
+/* Comment section */
+
+.comment-form .avatar-container {
+  height: 40px;
+  width: 40px;
+}
+
+.comment .comment-container {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  margin: 0;
+  padding: 5px 5px;
+}
+
+.comment .comment-container .avatar-container {
+  height: 35px;
+  width: 35px;
+  border-radius: 25%;
+}
+
+.comment .comment-container p {
+  max-width: calc(100% - 40px);
+  margin: 2px 0;
+}
+
+/* 
+  
+  TODO
+  
+  .comment .date p {
+    font-style: italic;
+    font-size: 0.5rem;
+    margin: 10px;
+  } */
+
+.comment .comment-container p span {
+  margin: 5px 5px;
+  color: green;
+  font-size: 16px;
+}
+
+.comment .show-replies-form {
+  line-height: 1em;
+}
+
+.comment .show-replies-form button {
+  margin: 0 5px;
+  border: none;
+  background-color: black;
+  color: rgb(90, 194, 90);
+  height: 1em;
+  font-size: 12px;
+  padding: 0;
+}
+
+.comment .reply-form {
+  margin-left: 50px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: rgb(90, 194, 90);
+}
+
+.comment .visible {
+  display: flex;
+}
+
+.comment .reply-form button {
+  margin: 0;
+  width: 50px;
+  padding: 0;
+}
+
+.comment .reply-form .avatar-container {
+  height: 30px;
+  width: 30px;
+}
+
+.comment .reply-list {
+  list-style: none;
+}

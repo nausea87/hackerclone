@@ -9,7 +9,11 @@
     <?php endif; ?>
 
     <?php $user = getUserById($pdo, $_SESSION['user']['id']); ?>
-    <?php foreach (getAllPosts($pdo) as $post) : ?>
+
+    <!-- <button class="show-posts"> -->
+    <!--- Work on maximize/minimize view -->
+
+    <?php foreach (showPosts($pdo) as $post) : ?>
         <article class="post">
 
             <div class="user-container">
@@ -25,10 +29,11 @@
                     <p><?php echo $post['date']; ?></p>
                 </div>
             </div>
-            <!-- Fix title -->
+            <!-- Title -->
             <div class="title">
                 <p><?php echo $post['title']; ?></p>
             </div>
+
 
             <!-- Images -->
             <div class="post-image-container">
@@ -39,26 +44,26 @@
             <div class="like-box">
                 <form class="like-form" action="app/posts/likes.php">
                     <input type="hidden" name="id" value="<?php echo $post['id'] ?>">
+                    <!-- Fix green / red -->
                     <button class="like-button" type="submit">
-                        <?php echo isLikedBy($pdo, $_SESSION['user']['id'], $post['id']) ? "unlike" : "like"; ?>
+                        <?php echo postIsLiked($pdo, $_SESSION['user']['id'], $post['id']) ? "unlike" : "like"; ?>
                     </button>
                 </form>
                 <p><?php echo formatLikes(getNumberOfLikes($pdo, $post['id'])); ?></p>
             </div>
 
-            <?php if (strlen($post['description']) !== 0) : ?>
-                <p><?php echo $post['description']; ?></p>
-            <?php endif; ?>
+            <!--Content-->
+            <p><?php echo $post['description']; ?></p>
 
-            <?php $numberOfComments = getNumberOfComments($pdo, $post['id']); ?>
-            <?php if ($numberOfComments > 2) : ?>
-                <form class="show-comments-form" action="">
-                    <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
-                    <button class="show-comments-button">view
-                        <?php echo $numberOfComments ?> comments
-                    </button>
-                </form>
-            <?php endif; ?>
+
+            <!--Comments-->
+
+
+            <form class="show-comments-form" action="">
+                <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
+                <button class="show-comments-button">comments
+                </button>
+            </form>
 
             <ul class="comment-list">
                 <?php if (count(getLatestComments($pdo, $post['id'])) !== 0) : ?>
@@ -90,9 +95,12 @@
                                     <img class="avatar" src="/uploads/avatars/<?php echo $user['avatar']; ?>" alt="avatar">
                                 </div>
                                 <input type="hidden" name="id" value="<?php echo $comment['id']; ?>">
-                                <textarea name="reply" cols="45" rows="1" maxlength="140" placeholder="reply..." required></textarea>
+                                <textarea name="reply" cols="45" rows="1" placeholder="reply..." required></textarea>
+
                                 <button type="submit">>>></button>
+
                             </form>
+
                         </article>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -103,34 +111,34 @@
                     <img class="avatar" src="/uploads/avatars/<?php echo $user['avatar']; ?>" alt="avatar">
                 </div>
                 <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
-                <textarea name="comment" cols="45" rows="1" placeholder="Write comment..." required></textarea>
+                <textarea name="comment" cols="45" rows="1" placeholder="Comment..." required></textarea>
                 <button type="submit">>>></button>
             </form>
         </article>
     <?php endforeach; ?>
 
 <?php else : ?>
-    <h1>Welcome to the truth...</h1>
-    <h2>Create account:</h2>
+    <h1>w3lC0m3 stR4nG3er...</h1>
+    <h2>cR34t3 4cc0uNt:</h2>
 
     <form action="app/users/signup.php" method="post">
-        <div class="form-section">
+        <div class="formsection">
             <label for="fullName">Name</label>
             <input type="text" name="fullName" id="fullName" placeholder="name" required>
         </div>
-        <div class="form-section">
+        <div class="formsection">
             <label for="email">E-mail</label>
             <input type="email" name="email" id="email" placeholder="example@gmail.com" required>
         </div>
-        <div class="form-section">
+        <div class="formsection">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" placeholder="username" required>
         </div>
-        <div class="form-section">
+        <div class="formsection">
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="password" required>
         </div>
-        <div class="form-section">
+        <div class="formsection">
             <label for="confirmPassword">Confirm password</label>
             <input type="password" name="confirmPassword" id="confirmPassword" placeholder="password" required>
         </div>

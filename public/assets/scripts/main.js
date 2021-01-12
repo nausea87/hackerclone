@@ -7,7 +7,7 @@ messages.forEach(message => {
     }, 1000);
 });
 
-//Generate comment form
+//Generate comment & reply form
 const commentForms = document.querySelectorAll(".comment-form");
 const showCommentsForms = document.querySelectorAll(".show-comments-form");
 const createCommentTemplate = (
@@ -16,7 +16,7 @@ const createCommentTemplate = (
     username,
     comment,
     commentId,
-    loggedInUserAvatar
+    
 ) => {
     return `<li class="comment-container">
                 <a href="/profile.php?id=${userId}">
@@ -33,7 +33,7 @@ const createCommentTemplate = (
             <ul class="reply-list"></ul>
             <form class="reply-form" action="" method="post">
                 <div class="avatar-container">
-                    <img class="avatar" src="/uploads/avatars/${loggedInUserAvatar}" alt="avatar">
+                    <img class="avatar" src="/uploads/avatars/${avatar}" alt="avatar">
                 </div>
                 <input type="hidden" name="id" value="${commentId}">
                 <textarea name="reply" cols="45" rows="1" maxlength="140" placeholder="reply..." required></textarea>
@@ -41,7 +41,7 @@ const createCommentTemplate = (
             </form>`;
 };
 
-//post the form data and append valid comment to the comment-list
+//Post form 
 commentForms.forEach(commentForm => {
     commentForm.addEventListener("submit", event => {
         event.preventDefault();
@@ -92,7 +92,7 @@ commentForms.forEach(commentForm => {
     });
 });
 
-//get all comments on a post toggle to show all or less
+//Get comments on post
 showCommentsForms.forEach(showCommentsForm => {
     showCommentsForm.addEventListener("submit", event => {
         event.preventDefault();
@@ -105,7 +105,7 @@ showCommentsForms.forEach(showCommentsForm => {
                 return response.json();
             })
             .then(json => {
-                //display problems with the POST data
+               
                 if (json.valid === false) {
                     window.alert(json.errors);
                 } else {
@@ -115,12 +115,11 @@ showCommentsForms.forEach(showCommentsForm => {
                     const commentList = event.target.parentElement.querySelector(
                         ".comment-list"
                     );
-                    //show all comments if button hasn't been pressed already
+                    
                     if (
                         showCommentsButton.classList.contains("active") ===
                         false
                     ) {
-                        //add all comments to the comment-list
                         commentList.innerHTML = "";
                         json.comments.forEach(response => {
                             const comment = document.createElement("article");
@@ -134,27 +133,27 @@ showCommentsForms.forEach(showCommentsForm => {
                                 json.loggedInUser.avatar
                             );
                             commentList.appendChild(comment);
-                            //add reply-button text to comment
+                          
                             const replyButton = comment.querySelector(
                                 ".show-replies-form .reply-button"
                             );
                             replyButton.textContent = response.buttonText;
-                            //activate the reply-button on comment
+                            
                             let showRepliesForm = comment.querySelector(
                                 ".show-replies-form"
                             );
                             activateReplyButton(showRepliesForm);
-                            //activate the reply-form on comment
+                            
                             let replyForm = comment.querySelector(
                                 ".reply-form"
                             );
                             activateReplyForm(replyForm);
                         });
-                        //add active class and change button text
+                      
                         showCommentsButton.classList.add("active");
                         showCommentsButton.textContent = "Show Less";
                     } else {
-                        //remove all comments except the last 2
+                      
                         const comments = commentList.querySelectorAll(
                             ".comment"
                         );
@@ -162,9 +161,9 @@ showCommentsForms.forEach(showCommentsForm => {
                             const comment = comments[i];
                             comment.parentElement.removeChild(comment);
                         }
-                        //remove active class and change button text
+                        
                         showCommentsButton.classList.remove("active");
-                        showCommentsButton.textContent = `show all ${json.comments.length} comments`;
+                        showCommentsButton.textContent = `comments`;
                     }
                 }
             })
@@ -180,7 +179,7 @@ const deletePostForm = document.querySelector(".delete-post-form");
 
 if (deletePostForm !== null) {
     deletePostForm.addEventListener("submit", event => {
-        if (!window.confirm("Are you sure you want to delete post?")) {
+        if (!window.confirm("Sure about this?")) {
             event.preventDefault();
         }
     });
@@ -202,16 +201,13 @@ showFormButtons.forEach(btn => {
 
 // Like formatting
 "use strict";
-const formatLikes = numberOfLikes => {
-    const int = Number(numberOfLikes);
+const formatLikes = numOfLikes => {
+    const int = Number(numOfLikes);
     if (int === 0) {
         return "";
     }
-    if (int === 1) {
-        return "1 Like";
-    }
-    if (int > 1) {
-        return numberOfLikes + " Likes";
+    else {
+        return numOfLikes + " Likes";
     }
 };
 
@@ -230,11 +226,11 @@ likeForms.forEach(likeForm => {
             })
             .then(json => {
                 const likeBtn = event.target.querySelector("button");
-                const likeNumber = event.target.parentElement.querySelector(
+                const likeNum = event.target.parentElement.querySelector(
                     "p"
                 );
                 likeBtn.textContent = json.buttonText;
-                likeNumber.textContent = formatLikes(json.numberOfLikes);
+                likeNum.textContent = formatLikes(json.numberOfLikes);
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -255,13 +251,13 @@ const createReplyTemplate = (userId, avatar, username, reply) => {
     <p><a href="/profile.php?id=${userId}"><span>${username}</span></a>${reply}</p>`;
 };
 
+
 const createReplyButtonText = numberOfReplies => {
     if (numberOfReplies === 0) {
         return "reply";
-    } else if (numberOfReplies === 1) {
-        return "show 1 reply";
-    } else {
-        return `show ${numberOfReplies} replies`;
+    } 
+    else {
+        return `show replies`;
     }
 };
 

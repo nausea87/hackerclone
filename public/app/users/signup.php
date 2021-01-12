@@ -5,13 +5,13 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 if (
-    isset($_POST['fullName'],
+    isset($_POST['fullname'],
     $_POST['email'],
     $_POST['username'],
     $_POST['password'],
     $_POST['confirmPassword'])
 ) {
-    $fullName = trim(filter_var($_POST['fullName'], FILTER_SANITIZE_STRING));
+    $fullName = trim(filter_var($_POST['fullname'], FILTER_SANITIZE_STRING));
     $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
     $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
     $password = $_POST['password'];

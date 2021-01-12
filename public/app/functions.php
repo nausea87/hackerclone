@@ -4,13 +4,7 @@ declare(strict_types=1);
 
 // 'Exists' functions from guide 
 if (!function_exists('redirect')) {
-    /**
-     * Redirect the user to given path.
-     *
-     * @param string $path
-     *
-     * @return void
-     */
+
     function redirect(string $path)
     {
         header("Location: ${path}");
@@ -18,13 +12,7 @@ if (!function_exists('redirect')) {
     }
 }
 
-/**
- * If statement is false, die dump $pdo->errorInfo.
- *
- * @param PDO $pdo
- * @param mixed $statement
- * @return void
- */
+// Errors
 function pdoErrorInfo(PDO $pdo, $statement): void
 {
     if (!$statement) {
@@ -33,26 +21,12 @@ function pdoErrorInfo(PDO $pdo, $statement): void
 }
 
 
-
-/**
- * check if SESSION user is set
- *
- * @return boolean
- */
 function userIsLoggedIn(): bool
 {
     return isset($_SESSION['user']);
 }
 
-/**
- * Check if a value exists in the database in a specific column
- *
- * @param PDO $pdo
- * @param string $table
- * @param string $column
- * @param mixed $value
- * @return boolean
- */
+
 function existsInDatabase(PDO $pdo, string $table, string $column, $value): bool
 {
     $statement = $pdo->prepare('SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $column . ' = :value');
@@ -70,13 +44,8 @@ function existsInDatabase(PDO $pdo, string $table, string $column, $value): bool
     }
 }
 
-/**
- * Get all posts and the username and avatar of the poster
- *
- * @param PDO $pdo
- * @return array
- */
-function getAllPosts(PDO $pdo): array
+// Show posts in index.php
+function showPosts(PDO $pdo): array
 {
     $statement = $pdo->query('SELECT posts.*, users.username, users.avatar FROM posts 
     INNER JOIN users 
@@ -91,14 +60,7 @@ function getAllPosts(PDO $pdo): array
     return $posts;
 }
 
-/**
- * Get user from database, returns array if user id exists.
- * If id doesnt exist, false is returned.
- *
- * @param PDO $pdo
- * @param integer $userId
- * @return mixed
- */
+
 function getUserById(PDO $pdo, string $userId)
 {
     // Getting user info
@@ -114,13 +76,7 @@ function getUserById(PDO $pdo, string $userId)
     return $user;
 }
 
-/**
- * Get a post from the database and username/avatar of poster, returns an array if the post exists, otherwize false is returned.
- *
- * @param PDO $pdo
- * @param string $postId
- * @return mixed
- */
+
 function getPostById(PDO $pdo, string $postId)
 {
     $statement = $pdo->prepare('SELECT posts.*, users.username, users.avatar FROM posts INNER JOIN users ON posts.user_id = users.id WHERE posts.id = :id');
@@ -135,13 +91,6 @@ function getPostById(PDO $pdo, string $postId)
     return $post;
 }
 
-/**
- * Get all posts from a user
- *
- * @param PDO $pdo
- * @param integer $userId
- * @return array
- */
 function getPostsByUser(PDO $pdo, string $userId): array
 {
     $statement = $pdo->prepare('SELECT posts.*, users.username, users.avatar FROM posts INNER JOIN users ON posts.user_id = users.id WHERE user_id = :user_id ORDER BY posts.date DESC');
@@ -156,42 +105,14 @@ function getPostsByUser(PDO $pdo, string $userId): array
     return $posts;
 }
 
-/**
- * Check if the page belongs to the logged in user.
- * Use only if $_GET['id'] is set and user is logged in.
- *
- * @return boolean
- */
+
 function isYourProfile(): bool
 {
     return $_SESSION['user']['id'] === $_GET['id'];
 }
 
-function isYourComment($pdo, $userId, $postId): bool
-{
-    $statement = $pdo->prepare('SELECT * FROM comments WHERE id = :postId');
-    pdoErrorInfo($pdo, $statement);
 
-    $statement->execute([
-        ':postId' => $postId
-    ]);
-
-    $post = $statement->fetch(PDO::FETCH_ASSOC);
-
-    if ($post['user_id'] === $_SESSION['user']['id']) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-/**
- * Get the number of likes on a post
- *
- * @param PDO $pdo
- * @param string $postId
- * @return string
- */
+// Number of likes
 function getNumberOfLikes(PDO $pdo, string $postId): string
 {
     $statement = $pdo->prepare('SELECT count(user_id) FROM likes WHERE post_id = :postId');
@@ -205,15 +126,8 @@ function getNumberOfLikes(PDO $pdo, string $postId): string
     return $count;
 }
 
-/**
- * check if a post is liked by a specific user
- *
- * @param PDO $pdo
- * @param string $userId
- * @param string $postId
- * @return boolean
- */
-function isLikedBy(PDO $pdo, string $userId, string $postId): bool
+// Like & Unlike
+function postIsLiked(PDO $pdo, string $userId, string $postId): bool
 {
     $statement = $pdo->prepare('SELECT * FROM likes WHERE user_id = :userId AND post_id = :postId');
     if (!$statement) {
@@ -231,34 +145,19 @@ function isLikedBy(PDO $pdo, string $userId, string $postId): bool
     }
 }
 
-/**
- * Format the number of likes to a string to be displayed on the front-end
- *
- * @param string $numberOfLikes
- * @return string
- */
+// Format likes
 function formatLikes(string $numberOfLikes): string
 {
     $int = intval($numberOfLikes);
 
     if ($int === 0) {
         return "";
-    }
-    if ($int === 1) {
-        return "1 Like";
-    }
-    if ($int > 1) {
+    } else {
         return $numberOfLikes . " Likes";
     }
 }
 
-/**
- * Echo any errors or messages set in $_SESSION wrapped in a <p> tag.
- * Unset them after they have been printed.
- * The <p> tags have the css classes "errors" and "messages".
- *
- * @return void
- */
+// Displaying errors & messages
 function showErrorsAndMessages(): void
 {
     if (isset($_SESSION['errors'])) {
@@ -271,60 +170,38 @@ function showErrorsAndMessages(): void
     }
 }
 
-/**
- * Check if uploaded image is of valid type and size, if false $_SESSION['errors'] is set accordingly.
- *
- * @param array $image
- * @return boolean
- */
+// Validation of images
 function isValidImage(array $image): bool
 {
     if ($image['type'] !== 'image/jpeg' && $image['type'] !== 'image/jpg' && $image['type'] !== 'image/png') {
         $_SESSION['errors'] = "The image filetype is not valid";
         return false;
     }
-
-    if ($image['size'] > '3000000') {
-        $_SESSION['errors'] = "The image file is too big, 3mb is max";
-        return false;
-    }
-
     return true;
 }
 
-/**
- * Check if username is taken, contains spaces or is of invalid length, if false $_SESSION['errors'] is set accordingly.
- *
- * @param PDO $pdo
- * @param string $username
- * @return boolean
- */
+// Checks if username is valid
 function isValidUsername(PDO $pdo, string $username): bool
 {
     if (existsInDatabase($pdo, 'users', 'username', $username)) {
-        $_SESSION['errors'] = "username is already registered";
+        $_SESSION['errors'] = "This username is already taken";
         return false;
     }
 
     if (strpos($username, ' ') !== false) {
-        $_SESSION['errors'] = 'no spaces allowed in username';
+        $_SESSION['errors'] = 'Spaces not allowed';
         return false;
     }
 
-    if (strlen($username) < 3 || strlen($username) > 15) {
-        $_SESSION['errors'] = 'username has to be between 3-15 characters long';
+    if (strlen($username) < 3 || strlen($username) > 12) {
+        $_SESSION['errors'] = 'username has to be between 3-12 characters long';
         return false;
     }
 
     return true;
 }
 
-/**
- * Create unique file name with extension from the uploaded files type.
- *
- * @param string $fileType
- * @return string
- */
+
 function createFileName(string $fileType): string
 {
     $fileExt = '.' . explode('/', $fileType)[1];
@@ -332,13 +209,7 @@ function createFileName(string $fileType): string
     return $fileName;
 }
 
-/**
- * Get the 2 latest comments on the post, returns an array with 0-2 items.
- *
- * @param PDO $pdo
- * @param string $postId
- * @return array
- */
+// Get two latest comments
 function getLatestComments(PDO $pdo, string $postId): array
 {
     $statement = $pdo->prepare('SELECT * FROM comments WHERE post_id = :postId ORDER BY date DESC LIMIT 2');
@@ -349,22 +220,12 @@ function getLatestComments(PDO $pdo, string $postId): array
     ]);
 
     $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    //place the latest comment at the bottom
     if (count($comments) === 2) {
         $comments = array_reverse($comments);
     }
-
     return $comments;
 }
 
-/**
- * Get the number of replies on a post
- *
- * @param PDO $pdo
- * @param string $postId
- * @return string
- */
 function getNumberOfComments(PDO $pdo, string $postId): string
 {
     $statement = $pdo->prepare('SELECT count(*) FROM comments WHERE post_id = :postId');
@@ -379,14 +240,6 @@ function getNumberOfComments(PDO $pdo, string $postId): string
     return $count;
 }
 
-/**
- * Count number of replies on a comment and format to a string to be displayed on reply-button.
- * returns 'reply', 'show 1 reply' or 'show X replies'.
- *
- * @param PDO $pdo
- * @param string $commentId
- * @return string
- */
 function getReplyButtonText(PDO $pdo, string $commentId): string
 {
     $statement = $pdo->prepare('SELECT count(*) FROM replies WHERE comment_id = :commentId');
@@ -400,20 +253,13 @@ function getReplyButtonText(PDO $pdo, string $commentId): string
 
     if ($numberOfReplies === 0) {
         return 'reply';
-    } elseif ($numberOfReplies === 1) {
-        return 'show 1 reply';
     } else {
-        return "show $numberOfReplies replies";
+        return "show replies";
     }
 }
 
-/**
- * Check if user is following user profile you're watching
- *
- * @param pdo $pdo
- * @param int $followedId
- * @return void
- */
+
+//Follow functions
 function checkFollow($pdo, $followedId)
 {
     $statement = $pdo->prepare('SELECT * FROM follows where user_id_follows = :id AND user_id_followed = :follow');

@@ -13,11 +13,11 @@ if (!userIsLoggedIn()) {
 
 <form action="app/posts/forumstore.php" method="post" enctype="multipart/form-data">
 
-    <div class="form-section">
+    <div class="formsection">
         <label for="topic">Topic:</label>
         <textarea name="topic" id="topic" cols="30" rows="1"></textarea>
     </div>
-    <div class="form-section">
+    <div class="formsection">
         <label for="description">Description:</label>
         <textarea name="description" id="description" cols="30" rows="10"></textarea>
     </div>

@@ -8,8 +8,6 @@ if (!userIsLoggedIn()) {
     redirect('/');
 }
 
-header('Content-Type: application/json');
-
 if (isset($_POST['id'])) {
     $postId = trim(filter_var($_POST['id'], FILTER_SANITIZE_STRING));
     $valid = true;

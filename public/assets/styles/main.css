@@ -1,6 +1,7 @@
+/* Mobile prio */
+
 body {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: black;
 }
 
@@ -17,7 +18,7 @@ h2 {
   color: rgb(90, 194, 90);
 }
 
-/* Fix heart emote for like button later */
+/* Fix heart or thumbs emote for like-button later? */
 button {
   height: 2.5em;
   font-size: 12px;
@@ -26,13 +27,13 @@ button {
   background-color: black;
 }
 
-.form-section {
+.formsection {
   display: flex;
   flex-direction: column;
   color: rgb(90, 194, 90);
 }
 
-.form-section input {
+.formsection input {
   width: 100%;
   height: 2em;
 }
@@ -71,16 +72,15 @@ textarea {
   color: rgb(90, 194, 90);
 }
 
-/* Make hover effect? */
 a {
   font-size: 1rem;
   text-decoration: none;
 }
 
-/* Mobile props */
-@media (min-width: 1024px) {
+/* Desktop view */
+@media (min-width: 1200px) {
   .wrapper {
-    width: 40vw;
+    width: 75vw;
     padding-top: 0;
   }
   body {

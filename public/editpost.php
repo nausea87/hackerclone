@@ -17,7 +17,7 @@ if (!userIsLoggedIn()) {
                         <img class="post-image" src="/uploads/posts/<?php echo $post['image']; ?>" alt="post image">
                     </div>
                     <form action="app/posts/update.php" method="post" enctype="multipart/form-data">
-                        <div class="form-section">
+                        <div class="formsection">
                             <div class="flex-row">
                                 <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
                                 <label for="image">Upload new image:</label>

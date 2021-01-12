@@ -15,6 +15,8 @@ require __DIR__ . '/../app/autoload.php';
     <link rel="stylesheet" href="/assets/styles/main.css">
     <link rel="stylesheet" href="/assets/styles/navigation.css">
     <link rel="stylesheet" href="/assets/styles/post.css">
+    <link rel="stylesheet" href="/assets/styles/comments.css">
+    <link rel="stylesheet" href="/assets/styles/replies.css">
     <link rel="stylesheet" href="/assets/styles/forum.css">
     <link rel="stylesheet" href="/assets/styles/profile.css">
     <link rel="stylesheet" href="/assets/styles/edituser.css">

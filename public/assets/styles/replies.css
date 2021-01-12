@@ -1,0 +1,27 @@
+.reply {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  padding: 0;
+  margin: 10px;
+}
+
+.reply .avatar-container {
+  height: 20px;
+  width: 20px;
+}
+
+.reply p {
+  margin: 0;
+  color: rgb(90, 194, 90);
+}
+
+.reply p span {
+  font-size: 0.7rem;
+  margin: 0 5px;
+  color: green;
+}
+
+.reply .r-date {
+  font-size: 0.5rem;
+}

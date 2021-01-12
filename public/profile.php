@@ -28,9 +28,10 @@ if (!userIsLoggedIn()) {
                     <form action="app/users/follow.php" method="post">
                         <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
                         <?php if (!checkFollow($pdo, $_GET['id'])) : ?>
-                            <button type="submit">Follow</button>
+                            <button class="follow" type="submit"> Follow
+                            </button>
                         <?php else : ?>
-                            <button type="submit">Unfollow</button>
+                            <button class="unfollow" type="submit">Unfollow</button>
                         <?php endif; ?>
                     </form>
                 <?php endif; ?>
@@ -70,7 +71,7 @@ if (!userIsLoggedIn()) {
                             <form class="like-form" action="app/posts/likes.php">
                                 <input type="hidden" name="id" value="<?php echo $post['id'] ?>">
                                 <button class="like-button" type="submit">
-                                    <?php echo isLikedBy($pdo, $_SESSION['user']['id'], $post['id']) ? "unlike" : "like"; ?>
+                                    <?php echo postIsLiked($pdo, $_SESSION['user']['id'], $post['id']) ? "unlike" : "like"; ?>
                                 </button>
                             </form>
                             <p><?php echo formatLikes(getNumberOfLikes($pdo, $post['id'])); ?></p>
@@ -80,13 +81,12 @@ if (!userIsLoggedIn()) {
                             <p><?php echo $post['description']; ?></p>
                         <?php endif; ?>
 
-                        <?php $numberOfComments = getNumberOfComments($pdo, $post['id']); ?>
-                        <?php if ($numberOfComments > 2) : ?>
-                            <form class="show-comments-form" action="">
-                                <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
-                                <button class="show-comments-button">show all <?php echo $numberOfComments ?> comments</button>
-                            </form>
-                        <?php endif; ?>
+
+                        <form class="show-comments-form" action="">
+                            <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
+                            <button class="show-comments-button">show more comments</button>
+                        </form>
+
 
                         <ul class="comment-list">
                             <?php if (count(getLatestComments($pdo, $post['id'])) !== 0) : ?>
