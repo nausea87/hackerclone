@@ -8,6 +8,7 @@ if (!userIsLoggedIn()) {
     redirect('/');
 }
 
+//Store comments 
 if (isset($_POST['comment'], $_POST['id'])) {
     $comment = filter_var(trim($_POST['comment']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
     $postId = trim(filter_var($_POST['id'], FILTER_SANITIZE_STRING));
@@ -16,7 +17,7 @@ if (isset($_POST['comment'], $_POST['id'])) {
 
     if (!existsInDatabase($pdo, 'posts', 'id', $postId)) {
         $valid = false;
-        $errors = "post doesn't exist";
+        $errors = "Post not found";
         $response = [
             'valid' => $valid,
             'errors' => $errors

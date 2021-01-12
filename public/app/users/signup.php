@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+
+// Has to be fullName with big N for some reason
 if (
-    isset($_POST['fullname'],
+    isset($_POST['fullName'],
     $_POST['email'],
     $_POST['username'],
     $_POST['password'],
     $_POST['confirmPassword'])
 ) {
-    $fullName = trim(filter_var($_POST['fullname'], FILTER_SANITIZE_STRING));
+    $fullName = trim(filter_var($_POST['fullName'], FILTER_SANITIZE_STRING));
     $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
     $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
     $password = $_POST['password'];
@@ -26,11 +28,12 @@ if (
         $_SESSION['errors'] = "email is already registered";
         redirect('/');
     }
-
+    // Not taken, no spaces, 3-12 characters
     if (!isValidUsername($pdo, $username)) {
         redirect('/');
     }
 
+    // Criterias met -> Insert
     $statement = $pdo->prepare('INSERT INTO users (fullname, username, email, password) 
     VALUES (:fullname, :username, :email, :password)');
     pdoErrorInfo($pdo, $statement);
@@ -48,5 +51,5 @@ if (
 
     redirect('/');
 }
-
+// Back to mainpage
 redirect('/');

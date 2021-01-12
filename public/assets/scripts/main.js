@@ -176,7 +176,7 @@ showCommentsForms.forEach(showCommentsForm => {
     });
 });
 
-//EDIT POSTS
+//DELETE OWN POSTS
 
 const deletePostForm = document.querySelector(".delete-post-form");
 

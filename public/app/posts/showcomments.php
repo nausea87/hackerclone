@@ -14,7 +14,7 @@ if (isset($_POST['id'])) {
 
     if (!existsInDatabase($pdo, 'posts', 'id', $postId)) {
         $valid = false;
-        $errors = "post doesn't exist";
+        $errors = "Post not found";
         $response = [
             'valid' => $valid,
             'errors' => $errors
@@ -41,7 +41,7 @@ if (isset($_POST['id'])) {
 
     $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    //add username, avatar of commenter and nr of replies to each comment
+    // Display user info
     for ($i = 0; $i < count($comments); $i++) {
         $commenter = getUserById($pdo, $comments[$i]['user_id']);
         $comments[$i]['avatar'] = $commenter['avatar'];
@@ -49,7 +49,7 @@ if (isset($_POST['id'])) {
         $comments[$i]['buttonText'] = showComments($pdo, $comments[$i]['id']);
     }
 
-    //add logged in user for the reply form
+
     $loggedInUser = getUserById($pdo, $_SESSION['user']['id']);
 
     $response = [

@@ -18,6 +18,7 @@ if (isset($_FILES['image'], $_POST['id'])) {
         redirect('/editpost.php?id=' . $post['id']);
     }
 
+    // Puts uloaded images in uploads
     $fileName = createFileName($image['type']);
 
     if (!move_uploaded_file($image['tmp_name'], '../../uploads/posts/' . $fileName)) {

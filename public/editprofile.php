@@ -104,9 +104,12 @@
             </div>
             <button type="submit">></button>
         </form>
+
     </article>
 
-
+    <button class="delete">
+        <p>Delete your account</p>
+    </button>
     <!--FIX DELETE ACCOUNT -->
 
 

@@ -61,7 +61,6 @@
   font-size: 0.8rem;
 }
 
-/* Font-fam */
 .edit-user .bio-container {
   color: black;
   background-color: white;
@@ -72,15 +71,15 @@
   display: block;
 }
 
-/* .delete .delete-account {
+.delete {
   margin: 10px;
   background-color: rgb(197, 78, 78);
-  height: 60px;
+  height: 70px;
   width: 100px;
 }
 
-.delete .delete-account p {
+.delete p {
   margin: 5px 5px 5px 5px;
   color: black;
   font-weight: bolder;
-} */
+}
