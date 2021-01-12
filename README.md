@@ -2,6 +2,10 @@
 
 Big x-mas project!
 
+#
+
+Clone this repo and open /public/index.php in localhost.
+
 ## Features
 
 User should be able to:
