@@ -203,7 +203,6 @@ showFormButtons.forEach(btn => {
 });
 
 // Like formatting
-"use strict";
 const formatLikes = numOfLikes => {
     const int = Number(numOfLikes);
     if (int === 0) {
@@ -244,15 +243,14 @@ likeForms.forEach(likeForm => {
 
 
 // REPLIES
-"use_strict";
-
 const createReplyTemplate = (userId, avatar, username, reply) => {
     return `<a href="/profile.php?id=${userId}">
       <div class="avatar-container">
        <img class="avatar" src="/uploads/avatars/${avatar}" alt="avatar">
       </div>
     </a>
-    <p><a href="/profile.php?id=${userId}"><span>${username}</span></a>${reply}</p>`;
+    <p><a href="/profile.php?id=${userId}"><span>${username}</span>
+    </a>${reply}</p>`;
 };
 
 

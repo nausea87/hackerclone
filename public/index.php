@@ -10,8 +10,8 @@
 
     <?php $user = getUserById($pdo, $_SESSION['user']['id']); ?>
 
-    <!-- <button class="show-posts"> -->
-    <!--- Work on maximize/minimize view -->
+
+    <!--- TODO: Work on maximize/minimize view -->
 
     <?php foreach (showPosts($pdo) as $post) : ?>
         <article class="post">
@@ -82,10 +82,11 @@
                                     <a href="/profile.php?id=<?php echo $comment['user_id']; ?>"><span><?php echo $commenter['username']; ?>
                                         </span></a><?php echo $comment['comment']; ?>
 
+                                    <!-- Fix edits -->
                                     <!-- <form class="edit-comment" action="">
                                     <input type="hidden" name="id" value="">
                                     <button class="edit-comment">edit</button>
-                                    </form> -->
+                                </form> -->
                                 </p>
 
                             </li>
