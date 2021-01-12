@@ -46,3 +46,5 @@ User should be able to:
 3. README with instructions.[X]
 4. LICENSE.[X]
 5. .editorconfig with my preferred settings.[X]
+
+## Comments from Joacim Johansson:
