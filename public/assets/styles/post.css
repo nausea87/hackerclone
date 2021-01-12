@@ -84,6 +84,10 @@
   margin: 0;
 }
 
+/* .like .like-btn
+{
+
+} */
 @media (min-width: 1200px) {
   .post {
     border-left: 2px solid rgb(90, 194, 90);

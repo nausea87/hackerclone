@@ -18,7 +18,7 @@ if (isset($_FILES['image'], $_POST['id'])) {
         redirect('/editpost.php?id=' . $post['id']);
     }
 
-    // Puts uloaded images in uploads
+    // Puts uploaded images in uploads
     $fileName = createFileName($image['type']);
 
     if (!move_uploaded_file($image['tmp_name'], '../../uploads/posts/' . $fileName)) {
@@ -36,7 +36,7 @@ if (isset($_FILES['image'], $_POST['id'])) {
         ':postId' => $post['id']
     ]);
 
-    $_SESSION['messages'] = 'image updated';
+    $_SESSION['messages'] = 'Success!';
 
     redirect('/editpost.php?id=' . $post['id']);
 }
@@ -53,7 +53,7 @@ if (isset($_POST['description'], $_POST['id'])) {
         ':postId' => $post['id']
     ]);
 
-    $_SESSION['messages'] = 'Text updated';
+    $_SESSION['messages'] = 'Content updated';
 
     redirect('/editpost.php?id=' . $post['id']);
 }

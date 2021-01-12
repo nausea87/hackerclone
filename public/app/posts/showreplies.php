@@ -17,7 +17,7 @@ if (isset($_POST['id'])) {
 
     if (!existsInDatabase($pdo, 'comments', 'id', $commentId)) {
         $valid = false;
-        $errors = "comment doesn't exist";
+        $errors = "Comment not found";
         $response = [
             'valid' => $valid,
             'errors' => $errors
