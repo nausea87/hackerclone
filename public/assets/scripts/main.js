@@ -1,3 +1,6 @@
+// Breakout in several JS
+
+
 "use_strict";
 // To remove comments a second
 const messages = document.querySelectorAll(".messages");
@@ -28,7 +31,7 @@ const createCommentTemplate = (
             </li>
             <form class="show-replies-form" action="" method="post">
                 <input type="hidden" name="id" value="${commentId}">
-                <button class="reply-button" type="submit">reply</button>
+                <button class="reply-btn" type="submit">reply</button>
             </form>
             <ul class="reply-list"></ul>
             <form class="reply-form" action="" method="post">
@@ -36,7 +39,7 @@ const createCommentTemplate = (
                     <img class="avatar" src="/uploads/avatars/${avatar}" alt="avatar">
                 </div>
                 <input type="hidden" name="id" value="${commentId}">
-                <textarea name="reply" cols="45" rows="1" maxlength="140" placeholder="reply..." required></textarea>
+                <textarea name="reply" cols="30" rows="1" placeholder="reply..." required></textarea>
                 <button type="submit">Send</button>
             </form>`;
 };
@@ -135,7 +138,7 @@ showCommentsForms.forEach(showCommentsForm => {
                             commentList.appendChild(comment);
                           
                             const replyButton = comment.querySelector(
-                                ".show-replies-form .reply-button"
+                                ".show-replies-form .reply-btn"
                             );
                             replyButton.textContent = response.buttonText;
                             
@@ -282,7 +285,7 @@ const activateReplyButton = showRepliesForm => {
                     window.alert(json.errors);
                 } else {
                     const replyButton = event.target.querySelector(
-                        ".reply-button"
+                        ".reply-btn"
                     );
                     const replyList = event.target.parentElement.querySelector(
                         ".reply-list"

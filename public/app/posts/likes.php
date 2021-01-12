@@ -8,8 +8,6 @@ if (!userIsLoggedIn()) {
     redirect('/');
 }
 
-
-
 if (isset($_POST['id'])) {
     $postId = trim(filter_var($_POST['id'], FILTER_SANITIZE_STRING));
     $userId = $_SESSION['user']['id'];
@@ -24,8 +22,8 @@ if (isset($_POST['id'])) {
             ':userId' => $userId,
             ':postId' => $postId
         ]);
-        // response to the front-end
-        $numberOfLikes = getNumberOfLikes($pdo, $postId);
+
+        $numberOfLikes = numOfLikes($pdo, $postId);
         $buttonText = "like";
         $response = [
             'numberOfLikes' => $numberOfLikes,
@@ -41,8 +39,8 @@ if (isset($_POST['id'])) {
             ':userId' => $userId,
             ':postId' => $postId
         ]);
-        // response to the front-end
-        $numberOfLikes = getNumberOfLikes($pdo, $postId);
+
+        $numberOfLikes = numOfLikes($pdo, $postId);
         $buttonText = "unlike";
         $response = [
             'numberOfLikes' => $numberOfLikes,

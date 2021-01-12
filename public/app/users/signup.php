@@ -30,7 +30,7 @@ if (
     if (!isValidUsername($pdo, $username)) {
         redirect('/');
     }
- 
+
     $statement = $pdo->prepare('INSERT INTO users (fullname, username, email, password) 
     VALUES (:fullname, :username, :email, :password)');
     pdoErrorInfo($pdo, $statement);

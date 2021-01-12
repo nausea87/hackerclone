@@ -24,16 +24,6 @@
   margin: 2px 0;
 }
 
-/* 
-  
-  TODO
-  
-  .comment .date p {
-    font-style: italic;
-    font-size: 0.5rem;
-    margin: 10px;
-  } */
-
 .comment .comment-container p span {
   margin: 5px 5px;
   color: green;

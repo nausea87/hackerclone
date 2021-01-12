@@ -54,7 +54,7 @@
                 <label for="biography">
                     <p>Biography:</p>
                 </label>
-                <textarea class="bio-container" maxlength="140" name="biography" id="biography" cols="40" rows="3" required><?php echo isset($user['biography']) ? $user['biography'] : ''; ?></textarea>
+                <textarea class="bio-container" name="biography" id="biography" cols="40" rows="3" required><?php echo isset($user['biography']) ? $user['biography'] : ''; ?></textarea>
                 <button type="submit">></button>
             </div>
         </form>

@@ -46,7 +46,7 @@ if (isset($_POST['id'])) {
         $commenter = getUserById($pdo, $comments[$i]['user_id']);
         $comments[$i]['avatar'] = $commenter['avatar'];
         $comments[$i]['username'] = $commenter['username'];
-        $comments[$i]['buttonText'] = getReplyButtonText($pdo, $comments[$i]['id']);
+        $comments[$i]['buttonText'] = showComments($pdo, $comments[$i]['id']);
     }
 
     //add logged in user for the reply form

@@ -8,7 +8,7 @@ if (!userIsLoggedIn()) {
     redirect('/');
 }
 
-header('Content-Type: application/json');
+
 
 if (isset($_POST['id'], $_POST['reply'])) {
     $reply = filter_var(trim($_POST['reply']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);

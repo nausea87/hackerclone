@@ -67,14 +67,14 @@ if (!userIsLoggedIn()) {
                             <img class="post-image" src="/uploads/posts/<?php echo $post['image']; ?>" alt="post image">
                         </div>
 
-                        <div class="like-box">
+                        <div class="likes">
                             <form class="like-form" action="app/posts/likes.php">
                                 <input type="hidden" name="id" value="<?php echo $post['id'] ?>">
-                                <button class="like-button" type="submit">
+                                <button class="like-btn" type="submit">
                                     <?php echo postIsLiked($pdo, $_SESSION['user']['id'], $post['id']) ? "unlike" : "like"; ?>
                                 </button>
                             </form>
-                            <p><?php echo formatLikes(getNumberOfLikes($pdo, $post['id'])); ?></p>
+                            <p><?php echo formatLikes(numOfLikes($pdo, $post['id'])); ?></p>
                         </div>
 
                         <?php if (strlen($post['description']) !== 0) : ?>
@@ -104,7 +104,7 @@ if (!userIsLoggedIn()) {
 
                                         <form class="show-replies-form" action="app/posts/getallreplies.php" method="post">
                                             <input type="hidden" name="id" value="<?php echo $comment['id'] ?>">
-                                            <button class="reply-button" type="submit"><?php echo getReplyButtonText($pdo, $comment['id']); ?></button>
+                                            <button class="reply-btn" type="submit"><?php echo showComments($pdo, $comment['id']); ?></button>
                                             <!--Edit comment here, couldn't re-fix in time.--->
                                         </form>
                                         <ul class="reply-list"></ul>
@@ -113,7 +113,7 @@ if (!userIsLoggedIn()) {
                                                 <img class="avatar" src="/uploads/avatars/<?php echo $user['avatar']; ?>" alt="avatar">
                                             </div>
                                             <input type="hidden" name="id" value="<?php echo $comment['id']; ?>">
-                                            <textarea name="reply" cols="45" rows="1" maxlength="140" placeholder="reply..." required></textarea>
+                                            <textarea name="reply" cols="30" rows="1" placeholder="reply..." required></textarea>
                                             <button type="submit">>>></button>
                                         </form>
                                     </article>
@@ -125,7 +125,7 @@ if (!userIsLoggedIn()) {
                                 <img class="avatar" src="/uploads/avatars/<?php echo $user['avatar']; ?>" alt="avatar">
                             </div>
                             <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
-                            <textarea name="comment" cols="45" rows="1" maxlength="140" placeholder="Leave a comment..." required></textarea>
+                            <textarea name="comment" cols="30" rows="1" placeholder="Leave a comment..." required></textarea>
                             <button type="submit">>>></button>
                         </form>
                         <?php if (isYourProfile()) : ?>

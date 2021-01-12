@@ -113,7 +113,7 @@ function isYourProfile(): bool
 
 
 // Number of likes
-function getNumberOfLikes(PDO $pdo, string $postId): string
+function numOfLikes(PDO $pdo, string $postId): string
 {
     $statement = $pdo->prepare('SELECT count(user_id) FROM likes WHERE post_id = :postId');
     if (!$statement) {
@@ -240,7 +240,7 @@ function getNumberOfComments(PDO $pdo, string $postId): string
     return $count;
 }
 
-function getReplyButtonText(PDO $pdo, string $commentId): string
+function showComments(PDO $pdo, string $commentId): string
 {
     $statement = $pdo->prepare('SELECT count(*) FROM replies WHERE comment_id = :commentId');
     pdoErrorInfo($pdo, $statement);

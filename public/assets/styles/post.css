@@ -48,7 +48,7 @@
   margin: 10px;
 }
 
-.post .like-box {
+.post .likes {
   display: flex;
   justify-content: space-between;
 }

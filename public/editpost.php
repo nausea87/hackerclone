@@ -30,7 +30,7 @@ if (!userIsLoggedIn()) {
                         <div class="flex-column">
                             <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
                             <label for="description">Update Description:</label>
-                            <textarea maxlength="140" name="description" id="description" cols="50" rows="3" required><?php echo isset($post['description']) ? $post['description'] : ''; ?></textarea>
+                            <textarea name="description" id="description" cols="50" rows="3" required><?php echo isset($post['description']) ? $post['description'] : ''; ?></textarea>
                             <button type="submit">Save</button>
                         </div>
                     </form>
