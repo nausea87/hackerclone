@@ -17,6 +17,7 @@
   height: 35px;
   width: 35px;
   border-radius: 25%;
+  border: 0;
 }
 
 .comment .comment-container p {
@@ -28,6 +29,12 @@
   margin: 5px 5px;
   color: green;
   font-size: 16px;
+}
+
+.comment .edit-comments-form p {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
 }
 
 .comment .show-replies-form {

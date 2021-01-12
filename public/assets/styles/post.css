@@ -95,4 +95,8 @@
     border-top: 2px solid rgb(90, 194, 90);
     border-bottom: 2px solid rgb(90, 194, 90);
   }
+
+  .formsection {
+    width: calc(100% -100px -100px);
+  }
 }

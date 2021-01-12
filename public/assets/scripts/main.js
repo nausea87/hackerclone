@@ -2,12 +2,13 @@
 
 
 "use_strict";
-// To remove comments a second
+// To remove comments after a second
 const messages = document.querySelectorAll(".messages");
 messages.forEach(message => {
     setTimeout(() => {
         message.parentElement.removeChild(message);
     }, 1000);
+    console.log('this works!');
 });
 
 //Generate comment & reply form
@@ -39,7 +40,7 @@ const createCommentTemplate = (
                     <img class="avatar" src="/uploads/avatars/${avatar}" alt="avatar">
                 </div>
                 <input type="hidden" name="id" value="${commentId}">
-                <textarea name="reply" cols="30" rows="1" placeholder="reply..." required></textarea>
+                <textarea name="reply" cols="40" rows="1" placeholder="reply..." required></textarea>
                 <button type="submit">Send</button>
             </form>`;
 };
@@ -57,11 +58,9 @@ commentForms.forEach(commentForm => {
                 return response.json();
             })
             .then(json => {
-                //display problems with invalid $_POST data
-                if (json.valid === false) {
+               if (json.valid === false) {
                     window.alert(json.errors);
                 } else {
-                    //append the comment to the comment-list
                     const commentList = event.target.parentElement.querySelector(
                         ".comment-list"
                     );
@@ -76,15 +75,15 @@ commentForms.forEach(commentForm => {
                         json.loggedInUser.avatar
                     );
                     commentList.appendChild(comment);
-                    //activate the reply-button
+                    
                     let showRepliesForm = comment.querySelector(
                         ".show-replies-form"
                     );
                     activateReplyButton(showRepliesForm);
-                    //activate the reply-form
+                  
                     let replyForm = comment.querySelector(".reply-form");
                     activateReplyForm(replyForm);
-                    //empty the input field after comment is appended
+                  
                     const commentInput = commentForm.querySelector("textarea");
                     commentInput.value = "";
                 }
@@ -95,7 +94,7 @@ commentForms.forEach(commentForm => {
     });
 });
 
-//Get comments on post
+//Get comments on post (Clean this up)
 showCommentsForms.forEach(showCommentsForm => {
     showCommentsForm.addEventListener("submit", event => {
         event.preventDefault();
@@ -185,6 +184,7 @@ if (deletePostForm !== null) {
         if (!window.confirm("Sure about this?")) {
             event.preventDefault();
         }
+        console.log('Post deleted');
     });
 }
 
@@ -212,6 +212,7 @@ const formatLikes = numOfLikes => {
     else {
         return numOfLikes + " Likes";
     }
+    
 };
 
 const likeForms = document.querySelectorAll(".like-form");

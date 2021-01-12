@@ -63,18 +63,31 @@
                 </button>
             </form>
 
+
+
             <ul class="comment-list">
+                <!-- If comments exist -->
                 <?php if (count(getLatestComments($pdo, $post['id'])) !== 0) : ?>
                     <?php foreach (getLatestComments($pdo, $post['id']) as $comment) : ?>
                         <?php $commenter = getUserById($pdo, $comment['user_id']); ?>
                         <article class="comment">
                             <li class="comment-container">
                                 <a href="/profile.php?id=<?php echo $comment['user_id']; ?>">
+
                                     <div class="avatar-container">
                                         <img class="avatar" src="/uploads/avatars/<?php echo $commenter['avatar']; ?>" alt="avatar">
                                     </div>
                                 </a>
-                                <p><a href="/profile.php?id=<?php echo $comment['user_id']; ?>"><span><?php echo $commenter['username']; ?></span></a><?php echo $comment['comment']; ?></p>
+                                <p>
+                                    <a href="/profile.php?id=<?php echo $comment['user_id']; ?>"><span><?php echo $commenter['username']; ?>
+                                        </span></a><?php echo $comment['comment']; ?>
+
+                                    <!-- <form class="edit-comment" action="">
+                                    <input type="hidden" name="id" value="">
+                                    <button class="edit-comment">edit</button>
+                                    </form> -->
+                                </p>
+
                             </li>
 
                             <form class="show-replies-form" action="app/posts/showreplies.php" method="post">

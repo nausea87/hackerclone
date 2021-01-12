@@ -9,6 +9,8 @@
 .reply .avatar-container {
   height: 20px;
   width: 20px;
+  /* Just border this because didn't solve elsewhere in time */
+  border: 0;
 }
 
 .reply p {
