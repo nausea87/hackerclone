@@ -9,7 +9,7 @@ messages.forEach(message => {
     console.log('this works!');
 });
 
-//Generate comment & reply form
+//Generate comment & reply form from already styled CSS.
 const commentForms = document.querySelectorAll(".comment-form");
 const showCommentsForms = document.querySelectorAll(".show-comments-form");
 const postCommentTemplate = (

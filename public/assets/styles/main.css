@@ -80,7 +80,7 @@ a {
 /* Desktop view */
 @media (min-width: 1200px) {
   .wrapper {
-    width: 75vw;
+    width: 60vw;
     padding-top: 0;
   }
   body {

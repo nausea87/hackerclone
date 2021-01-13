@@ -8,7 +8,7 @@ if (!userIsLoggedIn()) {
     redirect('/');
 }
 
-//Store comments 
+//Get comments, also fetched from JS.
 if (isset($_POST['comment'], $_POST['id'])) {
     $comment = filter_var(trim($_POST['comment']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
     $postId = trim(filter_var($_POST['id'], FILTER_SANITIZE_STRING));

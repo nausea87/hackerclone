@@ -16,8 +16,6 @@ if (isset($_FILES['image'])) {
     $image = $_FILES['image'];
     $user = getUserById($pdo, $id);
 
-
-
     // Avatars
     if (!isValidImage($image)) {
         redirect('/editprofile.php');

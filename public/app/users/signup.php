@@ -25,7 +25,7 @@ if (
     }
     // No conflicts
     if (existsInDatabase($pdo, 'users', 'email', $email)) {
-        $_SESSION['errors'] = "Email already taken";
+        $_SESSION['errors'] = "Email or username already taken";
         redirect('/');
     }
     // Not taken, no spaces, 3-12 characters

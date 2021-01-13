@@ -15,7 +15,6 @@
 
     <?php foreach (showPosts($pdo) as $post) : ?>
         <article class="post">
-
             <div class="user-container">
                 <a href="/profile.php?id=<?php echo $post['user_id']; ?>">
                     <div class="avatar-username-container">
@@ -33,7 +32,6 @@
             <div class="title">
                 <p><?php echo $post['title']; ?></p>
             </div>
-
 
             <!-- Images -->
             <div class="post-image-container">
@@ -63,8 +61,6 @@
                 </button>
             </form>
 
-
-
             <ul class="comment-list">
                 <!-- If comments exist -->
                 <?php if (count(getLatestComments($pdo, $post['id'])) !== 0) : ?>
@@ -86,7 +82,7 @@
                                     <!-- <form class="edit-comment" action="">
                                     <input type="hidden" name="id" value="">
                                     <button class="edit-comment">edit</button>
-                                </form> -->
+                                    </form> -->
                                 </p>
 
                             </li>

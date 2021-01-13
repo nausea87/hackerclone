@@ -1,3 +1,5 @@
+<!-- Currently not in use -->
+
 <?php
 
 declare(strict_types=1);

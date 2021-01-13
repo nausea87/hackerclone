@@ -40,7 +40,7 @@ if (isset($_POST['title'], $_POST['description'], $_FILES['image'])) {
     ]);
 
     // Redirect back to main after post successfull.
-    $_SESSION['messages'] = "post uploaded!";
+    $_SESSION['messages'] = "Posted!";
     redirect('/');
 }
 

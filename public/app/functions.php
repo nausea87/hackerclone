@@ -44,7 +44,7 @@ function existsInDatabase(PDO $pdo, string $table, string $column, $value): bool
     }
 }
 
-// Show posts in index.php
+// Show posts in index.php ORDER BY DATE
 function showPosts(PDO $pdo): array
 {
     $statement = $pdo->query('SELECT posts.*, users.username, users.avatar FROM posts 

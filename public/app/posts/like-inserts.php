@@ -13,6 +13,8 @@ if (isset($_POST['id'])) {
     $userId = $_SESSION['user']['id'];
 
     // + / -
+
+    // If already liked, delete the like
     if (postIsLiked($pdo, $userId, $postId)) {
         $deleteStatement = $pdo->prepare('DELETE FROM likes WHERE user_id = :userId AND post_id = :postId');
         if (!$deleteStatement) {
@@ -24,12 +26,15 @@ if (isset($_POST['id'])) {
         ]);
 
         $numberOfLikes = numOfLikes($pdo, $postId);
-        $buttonText = "like";
+        $btnText = "like";
         $response = [
             'numberOfLikes' => $numberOfLikes,
-            'buttonText' => $buttonText
+            'buttonText' => $btnText
         ];
         echo json_encode($response);
+
+        // Else insert the like
+
     } else {
         $insertStatement = $pdo->prepare('INSERT INTO likes (user_id, post_id) VALUES (:userId, :postId)');
         if (!$insertStatement) {
@@ -41,10 +46,10 @@ if (isset($_POST['id'])) {
         ]);
 
         $numberOfLikes = numOfLikes($pdo, $postId);
-        $buttonText = "unlike";
+        $btnText = "unlike";
         $response = [
             'numberOfLikes' => $numberOfLikes,
-            'buttonText' => $buttonText
+            'buttonText' => $btnText
         ];
         echo json_encode($response);
     }
