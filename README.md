@@ -4,7 +4,7 @@ Big x-mas project!
 
 #
 
-1. Clone this repo, open start localhost in /public
+1. Clone this repo, start a localhost in /public
 2. Let your eyes bleed
 
 ## Features
