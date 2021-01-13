@@ -35,6 +35,7 @@ if (isset($_POST['id'], $_POST['reply'])) {
             'errors' => $errors
         ];
         echo json_encode($response);
+
         exit;
     }
 

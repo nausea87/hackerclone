@@ -109,10 +109,8 @@
                                     <img class="avatar" src="/uploads/avatars/<?php echo $user['avatar']; ?>" alt="avatar">
                                 </div>
                                 <input type="hidden" name="id" value="<?php echo $comment['id']; ?>">
-                                <textarea name="reply" cols="40" rows="1" placeholder="reply..." required></textarea>
-
+                                <textarea name="reply" cols="20" rows="1" placeholder="reply..." required></textarea>
                                 <button type="submit">>>></button>
-
                             </form>
 
                         </article>
