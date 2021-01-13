@@ -25,7 +25,4 @@ $statement->execute([
 
 $_SESSION['messages'] = 'Account deleted';
 
-
-
-
 redirect('/');
