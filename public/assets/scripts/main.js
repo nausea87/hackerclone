@@ -1,7 +1,5 @@
 // Breakout in several JS
-
-
-"use_strict";
+////////////////////////////////////
 // To remove comments after a second
 const messages = document.querySelectorAll(".messages");
 messages.forEach(message => {
@@ -45,7 +43,7 @@ const postCommentTemplate = (
             </form>`;
 };
 
-//Post form 
+//Post form fetch from php
 commentForms.forEach(commentForm => {
     commentForm.addEventListener("submit", event => {
         event.preventDefault();
@@ -94,7 +92,7 @@ commentForms.forEach(commentForm => {
     });
 });
 
-//Get comments on post (Clean this up)
+//Get comments on post (Clean this up?)
 showCommentsForms.forEach(showCommentsForm => {
     showCommentsForm.addEventListener("submit", event => {
         event.preventDefault();
@@ -135,12 +133,10 @@ showCommentsForms.forEach(showCommentsForm => {
                                 json.loggedInUser.avatar
                             );
                             commentList.appendChild(comment);
-                          
                             const replyButton = comment.querySelector(
                                 ".show-replies-form .reply-btn"
                             );
                             replyButton.textContent = response.buttonText;
-                            
                             let showRepliesForm = comment.querySelector(
                                 ".show-replies-form"
                             );
@@ -169,9 +165,6 @@ showCommentsForms.forEach(showCommentsForm => {
                     }
                 }
             })
-            .catch(error => {
-                console.error("Error:", error);
-            });
     });
 });
 
@@ -213,7 +206,6 @@ const formatLikes = numOfLikes => {
 };
 
 const likeForms = document.querySelectorAll(".like-form");
-
 likeForms.forEach(likeForm => {
     likeForm.addEventListener("submit", event => {
         event.preventDefault();
@@ -239,7 +231,6 @@ likeForms.forEach(likeForm => {
     });
 });
 
-
 // REPLIES FORM LOOK
 const createReplyTemplate = (userId, avatar, username, reply) => {
     return `<a href="/profile.php?id=${userId}">
@@ -249,8 +240,7 @@ const createReplyTemplate = (userId, avatar, username, reply) => {
     </a>
     <p><a href="/profile.php?id=${userId}"><span>${username}</span>
     </a>${reply}</p>`;
-    
-};
+    };
 
 const createReplyButtonText = numberOfReplies => {
     if (numberOfReplies === 0) {
@@ -279,22 +269,16 @@ const activateReplyButton = showRepliesForm => {
                 return response.json();
             })
             .then(json => {
-              
-                if (json.valid === false) {
-                    window.alert(json.errors);
-                } else {
-                    const replyButton = event.target.querySelector(
+                const replyButton = event.target.querySelector(
                         ".reply-btn"
                     );
                     const replyList = event.target.parentElement.querySelector(
-                        
                         ".reply-list"
                         );
                     if (replyButton.classList.contains("active") === false) {
                        
                         json.replies.forEach(response => {
                             const replyTemplate = createReplyTemplate(
-                                
                                 response.user_id,
                                 response.avatar,
                                 response.username,
@@ -305,7 +289,6 @@ const activateReplyButton = showRepliesForm => {
                             reply.innerHTML = replyTemplate;
                             replyList.appendChild(reply);
                         });
-                      
                         replyButton.classList.add("active");
                         replyButton.textContent = "hide replies";
                     } else {
@@ -316,9 +299,8 @@ const activateReplyButton = showRepliesForm => {
                             json.replies.length
                         );
                     }
-                }
-            });
-    });
+                });
+     });
 };
 
 const activateReplyForm = replyForm => {
