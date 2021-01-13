@@ -64,7 +64,7 @@ User should be able to:
 
 - app/users/delete-account.php/ $ ror 26: Did you manage to also remove the users postst and comment? Seems a bit incompletee to me, or did you get a CASCADE on DELETE function work on the DB?
 
--reply-to-comment: delete-account.php was something I couldn't finish in time. Though about deleting it pre-hand in but I want to keep working on this.
+Erik: delete-account.php was something I couldn't finish in time. Though about deleting it pre-hand in but I want to keep working on this.
 
 - app/posts/store.php/ @ row 12-13: Might consider making a custom function for this. Don't forget to validate urls using filter_var too :)
 
