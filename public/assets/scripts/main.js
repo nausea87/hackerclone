@@ -14,7 +14,7 @@ messages.forEach(message => {
 //Generate comment & reply form
 const commentForms = document.querySelectorAll(".comment-form");
 const showCommentsForms = document.querySelectorAll(".show-comments-form");
-const createCommentTemplate = (
+const postCommentTemplate = (
     userId,
     avatar,
     username,
@@ -50,7 +50,7 @@ commentForms.forEach(commentForm => {
     commentForm.addEventListener("submit", event => {
         event.preventDefault();
         const formData = new FormData(commentForm);
-        fetch("http://localhost:8000/app/posts/createcomment.php", {
+        fetch("http://localhost:8000/app/posts/post-comment.php", {
             method: "POST",
             body: formData
         })
@@ -66,7 +66,7 @@ commentForms.forEach(commentForm => {
                     );
                     const comment = document.createElement("li");
                     comment.classList.add("comment");
-                    comment.innerHTML = createCommentTemplate(
+                    comment.innerHTML = postCommentTemplate(
                         json.comment.user_id,
                         json.user.avatar,
                         json.user.username,
@@ -99,7 +99,7 @@ showCommentsForms.forEach(showCommentsForm => {
     showCommentsForm.addEventListener("submit", event => {
         event.preventDefault();
         const formData = new FormData(showCommentsForm);
-        fetch("http://localhost:8000/app/posts/showcomments.php", {
+        fetch("http://localhost:8000/app/posts/show-comments.php", {
             method: "POST",
             body: formData
         })
@@ -126,7 +126,7 @@ showCommentsForms.forEach(showCommentsForm => {
                         json.comments.forEach(response => {
                             const comment = document.createElement("article");
                             comment.classList.add("comment");
-                            comment.innerHTML = createCommentTemplate(
+                            comment.innerHTML = postCommentTemplate(
                                 response.user_id,
                                 response.avatar,
                                 response.username,
@@ -188,9 +188,7 @@ if (deletePostForm !== null) {
     });
 }
 
-// PROFILE EDITS
-
-"use_strict";
+// PROFILE EDIT FORM SHOW
 const showFormButtons = document.querySelectorAll(".show-form-button");
 
 showFormButtons.forEach(btn => {
@@ -202,7 +200,7 @@ showFormButtons.forEach(btn => {
     });
 });
 
-// Like formatting
+// Like post formatting
 const formatLikes = numOfLikes => {
     const int = Number(numOfLikes);
     if (int === 0) {
@@ -220,7 +218,7 @@ likeForms.forEach(likeForm => {
     likeForm.addEventListener("submit", event => {
         event.preventDefault();
         const formData = new FormData(likeForm);
-        fetch("http://localhost:8000/app/posts/likes.php", {
+        fetch("http://localhost:8000/app/posts/like-inserts.php", {
             method: "POST",
             body: formData
         })
@@ -242,7 +240,7 @@ likeForms.forEach(likeForm => {
 });
 
 
-// REPLIES
+// REPLIES FORM LOOK
 const createReplyTemplate = (userId, avatar, username, reply) => {
     return `<a href="/profile.php?id=${userId}">
       <div class="avatar-container">
@@ -251,8 +249,8 @@ const createReplyTemplate = (userId, avatar, username, reply) => {
     </a>
     <p><a href="/profile.php?id=${userId}"><span>${username}</span>
     </a>${reply}</p>`;
+    
 };
-
 
 const createReplyButtonText = numberOfReplies => {
     if (numberOfReplies === 0) {
@@ -271,9 +269,11 @@ const activateReplyButton = showRepliesForm => {
         );
         replyForm.classList.toggle("visible");
         const formData = new FormData(showRepliesForm);
-        fetch("http://localhost:8000/app/posts/showreplies.php", {
+       
+        fetch("http://localhost:8000/app/posts/show-replies.php", {
             method: "POST",
             body: formData
+            
         })
             .then(response => {
                 return response.json();
@@ -287,16 +287,18 @@ const activateReplyButton = showRepliesForm => {
                         ".reply-btn"
                     );
                     const replyList = event.target.parentElement.querySelector(
+                        
                         ".reply-list"
-                    );
+                        );
                     if (replyButton.classList.contains("active") === false) {
                        
                         json.replies.forEach(response => {
                             const replyTemplate = createReplyTemplate(
+                                
                                 response.user_id,
                                 response.avatar,
                                 response.username,
-                                response.reply
+                                response.reply            
                             );
                             const reply = document.createElement("li");
                             reply.classList.add("reply");
@@ -323,7 +325,7 @@ const activateReplyForm = replyForm => {
     replyForm.addEventListener("submit", event => {
         event.preventDefault();
         const formData = new FormData(replyForm);
-        fetch("http://localhost:8000/app/posts/createreply.php", {
+        fetch("http://localhost:8000/app/posts/post-reply.php", {
             method: "POST",
             body: formData
         })
@@ -358,8 +360,6 @@ const activateReplyForm = replyForm => {
             });
     });
 };
-
-"use_strict";
 
 const showRepliesForms = document.querySelectorAll(".show-replies-form");
 const replyForms = document.querySelectorAll(".reply-form");
