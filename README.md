@@ -50,6 +50,35 @@ User should be able to:
 
 ## Comments from Joacim Johansson:
 
+* index.php/ @ row 4: Nice use of function to check for logged users, I keep forgetting that myself.
+
+* index.php/ @ row 8: Good to remember to unset SESSION variabels ones they've served their use. I keep forgetting that as well.
+
+* index.php/ @ rows 20 - 25: A lot of divs here. Div may be good to wrap text, hower, I would personally recommend using a "figure" and "figcaption" as follows figure>img>figcaption>h2>/figcap>/figure>.
+
+* views/navigation.php/: Clever use of require. I had a bunch of if statements in my header.php. Gonna see about implmenting this myself in the future!
+
+
+* app/function.php/: curious why this is under app and not views (mostly cause I wonder if I placed my wrong then).
+
+* app/autload.php/ @ row 21: Be mind ful of keeping a databas connection open when you don't need it. Makes a good breach for hackers.
+
+* app/users/delete-account.php/ $ ror 26: Did you manage to also remove the users postst and comment? Seems a bit incompletee to me, or did you get a CASCADE on DELETE function work on the DB?
+
+
+* app/posts/store.php/ @ row 12-13: Might consider making a custom function for this. Don't forget to validate urls using filter_var too :)
+
+
+* assets/styles/comments.css/ @ row 35-38: Don't forget to delete commented code before the hand in.
+
+
+* assets/scripts/main.js/ @ row 13-43: Intresting method to use JS to fetch and build the data. I would still recomend building in HTML with PHP variable load in.
+
+Good work in general, might wanna look over the folder structures as a lot of files are named similiar and can be found in odd places (to the unsused)! :D
+
+// Joey Jay
+
 ### Testers:
 
 Joacim Johansson & Joakim Sjögren
+
