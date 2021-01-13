@@ -1,4 +1,4 @@
-# hackernews
+# Hackerclone
 
 Big x-mas project!
 
