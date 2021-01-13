@@ -12,17 +12,6 @@ if (isset($_POST['id'])) {
     $postId = trim(filter_var($_POST['id'], FILTER_SANITIZE_STRING));
     $valid = true;
 
-    if (!existsInDatabase($pdo, 'posts', 'id', $postId)) {
-        $valid = false;
-        $errors = "Post not found";
-        $response = [
-            'valid' => $valid,
-            'errors' => $errors
-        ];
-        echo json_encode($response);
-        exit;
-    }
-
     $statement = $pdo->prepare('SELECT * FROM comments WHERE post_id = :postId ORDER BY date ASC');
     if (!$statement) {
         $valid = false;
@@ -48,7 +37,6 @@ if (isset($_POST['id'])) {
         $comments[$i]['username'] = $commenter['username'];
         $comments[$i]['buttonText'] = showComments($pdo, $comments[$i]['id']);
     }
-
 
     $loggedInUser = getUserById($pdo, $_SESSION['user']['id']);
 

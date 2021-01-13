@@ -8,25 +8,14 @@ if (!userIsLoggedIn()) {
     redirect('/');
 }
 
-
-
 if (isset($_POST['id'], $_POST['reply'])) {
     $reply = filter_var(trim($_POST['reply']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
     $commentId = trim(filter_var($_POST['id'], FILTER_SANITIZE_STRING));
     $valid = true;
 
-    if (!existsInDatabase($pdo, 'comments', 'id', $commentId)) {
-        $valid = false;
-        $errors = "Comment not found";
-        $response = [
-            'valid' => $valid,
-            'errors' => $errors
-        ];
-        echo json_encode($response);
-        exit;
-    }
-
-    $statement = $pdo->prepare('INSERT INTO replies (user_id, comment_id, reply) VALUES (:user_id, :comment_id, :reply)');
+    // Insert replies and match with user_id, comment_id
+    $statement = $pdo->prepare('INSERT INTO replies (user_id, comment_id, reply) 
+    VALUES (:user_id, :comment_id, :reply)');
     if (!$statement) {
         $valid = false;
         $errors = $pdo->errorInfo();
@@ -35,7 +24,6 @@ if (isset($_POST['id'], $_POST['reply'])) {
             'errors' => $errors
         ];
         echo json_encode($response);
-
         exit;
     }
 
@@ -45,7 +33,7 @@ if (isset($_POST['id'], $_POST['reply'])) {
         ':reply' => $reply
     ]);
 
-    //get last added comment and commenter for the json response
+    // Get replies
     $statement = $pdo->prepare('SELECT * FROM replies WHERE id = :id');
     if (!$statement) {
         $valid = false;
@@ -66,7 +54,7 @@ if (isset($_POST['id'], $_POST['reply'])) {
 
     $user = getUserById($pdo, $_SESSION['user']['id']);
 
-    //add user info to the response
+    // User info
     $reply['username'] = $user['username'];
     $reply['avatar'] = $user['avatar'];
 
@@ -77,6 +65,4 @@ if (isset($_POST['id'], $_POST['reply'])) {
 
     echo json_encode($response);
     exit;
-
-    // echo json_encode($_POST);
 }
