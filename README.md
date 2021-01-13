@@ -4,7 +4,8 @@ Big x-mas project!
 
 #
 
-Clone this repo and open /public/index.php in localhost.
+1. Clone this repo, open start localhost in /public
+2. Let your eyes bleed
 
 ## Features
 
