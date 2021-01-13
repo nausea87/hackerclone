@@ -28,6 +28,7 @@ if (isset($_POST['email'], $_POST['password'])) {
 
     $username = $user['username'];
 
+    // If all verified = mainpage.
     if (password_verify($_POST['password'], $user['password']) === true) {
         unset($user['password']);
         $_SESSION['user']['id'] = $user['id'];

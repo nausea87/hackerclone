@@ -18,15 +18,6 @@ if (isset($_POST['id'])) {
         redirect('/');
     }
 
-    //View main
-    $statement = $pdo->prepare('SELECT * FROM comments WHERE post_id = :postId');
-    pdoErrorInfo($pdo, $statement);
-
-    $statement->execute([
-        ':postId' => $post['id']
-    ]);
-
-    $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     //Post (working)
     $statement = $pdo->prepare('DELETE FROM posts WHERE id = :postId');

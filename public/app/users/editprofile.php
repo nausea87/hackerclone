@@ -62,6 +62,7 @@ if (isset($_POST['username'])) {
 }
 
 if (isset($_POST['biography'])) {
+    // Last filert to allow ' and "
     $biography = filter_var(trim($_POST['biography']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 
     $statement = $pdo->prepare('UPDATE users SET biography = :biography WHERE id = :id');

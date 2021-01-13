@@ -34,6 +34,7 @@ if (!userIsLoggedIn()) {
                             <button type="submit">Save</button>
                         </div>
                     </form>
+                    <!--PHP and JS -->
                     <form class="delete-post-form" action="app/posts/delete.php" method="post">
                         <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
                         <button class="delete-post-button" type="submit">Delete Post</button>

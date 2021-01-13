@@ -92,7 +92,7 @@ commentForms.forEach(commentForm => {
     });
 });
 
-//Get comments on post (Clean this up?)
+//Get comments on post (Clean this up?) after button submit.
 showCommentsForms.forEach(showCommentsForm => {
     showCommentsForm.addEventListener("submit", event => {
         event.preventDefault();
@@ -149,7 +149,7 @@ showCommentsForms.forEach(showCommentsForm => {
                         });
                       
                         showCommentsButton.classList.add("active");
-                        showCommentsButton.textContent = "Show Less";
+                        showCommentsButton.textContent = "show less";
                     } else {
                       
                         const comments = commentList.querySelectorAll(
@@ -161,14 +161,14 @@ showCommentsForms.forEach(showCommentsForm => {
                         }
                         
                         showCommentsButton.classList.remove("active");
-                        showCommentsButton.textContent = `comments`;
+                        showCommentsButton.textContent = `show comments`;
                     }
                 }
             })
     });
 });
 
-//DELETE OWN POSTS
+//Just a window confirm for delete own post.
 
 const deletePostForm = document.querySelector(".delete-post-form");
 
@@ -198,6 +198,9 @@ const formatLikes = numOfLikes => {
     const int = Number(numOfLikes);
     if (int === 0) {
         return "";
+    }
+    if (int === 1){
+        return numOfLikes + " Like";
     }
     else {
         return numOfLikes + " Likes";
