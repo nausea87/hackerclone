@@ -40,14 +40,14 @@
 
             <!--Likes -->
             <div class="like">
-                <form class="like-form" action="app/posts/likes.php">
+                <form class="like-form" action="app/posts/like-inserts.php">
                     <input type="hidden" name="id" value="<?php echo $post['id'] ?>">
                     <!-- Fix green / red -->
+                    <p><?php echo formatLikes(numOfLikes($pdo, $post['id'])); ?></p>
                     <button class="like-btn" type="submit">
                         <?php echo postIsLiked($pdo, $_SESSION['user']['id'], $post['id']) ? "unlike" : "like"; ?>
                     </button>
                 </form>
-                <p><?php echo formatLikes(numOfLikes($pdo, $post['id'])); ?></p>
             </div>
 
             <!--Content-->
@@ -86,6 +86,20 @@
                                 </p>
 
                             </li>
+
+                            <p><?php echo $comment['date'] ?></p>
+
+                            <!--Comment Likes -->
+                            <div class="likes">
+                                <form class="comment-like-form" action="app/posts/comment-like-inserts.php">
+                                    <input type="hidden" name="id" value="<?php echo $comment['id'] ?>">
+                                    <!-- Fix green / red -->
+                                    <button class="like-btn" type="submit">
+                                        <?php echo commentIsLiked($pdo, $_SESSION['user']['id'], $comment['id']) ? "unlike" : "like"; ?>
+                                    </button>
+                                </form>
+                                <p><?php echo formatLikes(numOfCommentLikes($pdo, $comment['id'])); ?></p>
+                            </div>
 
                             <form class="show-replies-form" action="app/posts/showreplies.php" method="post">
                                 <input type="hidden" name="id" value="<?php echo $comment['id']; ?>">

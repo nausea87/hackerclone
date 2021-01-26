@@ -107,12 +107,22 @@
 
     </article>
 
-    <button class="delete">
-        <p>Delete your account</p>
-    </button>
-    <!--FIX DELETE ACCOUNT -->
-
-
+    <!--DELETE ACCOUNT -->
+    <article>
+        <div class="flex-row">
+            <p>DANGER</p>
+            <button class="show-form-button">Delete Account</button>
+            <p>DANGER</p>
+        </div>
+        <form action="app/users/delete-account.php" method="post">
+            <div class="formsection">
+                <label for="delete-button">
+                    <p>Are you sure? Please comfirm that you want to delete your account. Your posts, comments, replies, follows and upvotes will be deleted as well.</p>
+                </label>
+                <button type="submit" name="delete-account-button">Comfirm Account Deletion</button>
+            </div>
+        </form>
+    </article>
 
 </section>
 
