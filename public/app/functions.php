@@ -112,7 +112,7 @@ function isYourProfile(): bool
 }
 
 
-// Number of likes
+// Number of likes for posts
 function numOfLikes(PDO $pdo, string $postId): string
 {
     $statement = $pdo->prepare('SELECT count(user_id) FROM likes WHERE post_id = :postId');
@@ -121,6 +121,20 @@ function numOfLikes(PDO $pdo, string $postId): string
     }
     $statement->execute([
         ':postId' => $postId
+    ]);
+    $count = $statement->fetch()[0];
+    return $count;
+}
+
+// Number of likes for comments
+function numOfCommentLikes(PDO $pdo, string $commentId): string
+{
+    $statement = $pdo->prepare('SELECT count(user_id) FROM comment_likes WHERE comment_id = :commentId');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute([
+        ':commentId' => $commentId
     ]);
     $count = $statement->fetch()[0];
     return $count;
@@ -136,6 +150,25 @@ function postIsLiked(PDO $pdo, string $userId, string $postId): bool
     $statement->execute([
         ':userId' => $userId,
         ':postId' => $postId
+    ]);
+
+    if ($statement->fetch()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Function to see if the user has already liked a comment
+function commentIsLiked(PDO $pdo, string $userId, string $commentId): bool
+{
+    $statement = $pdo->prepare('SELECT * FROM comment_likes WHERE user_id = :userId AND comment_id = :commentId');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute([
+        ':userId' => $userId,
+        ':commentId' => $commentId
     ]);
 
     if ($statement->fetch()) {

@@ -79,3 +79,13 @@ Good work in general, might wanna look over the folder structures as a lot of fi
 ### Testers:
 
 Joacim Johansson & Joakim Sjögren
+
+## Hacker News+
+
+Extra features added by: [Jakob Gustafsson](https://github.com/gusjak)
+
+Link to commit/pull request: https://github.com/nausea87/hackerclone/commit/d8e71b22a7dc74f80a9ea66ebf0edd9df74c6db4
+
+- As a user I'm able to upvote and remove upvote on comments.
+
+- As a user I'm able to delete my account along with all posts, upvotes and comments.
